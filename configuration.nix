@@ -8,6 +8,7 @@
   boot.loader.grub.efiSupport = true;
 
   networking.networkmanager.enable = true; # for wifi
+  networking.hostName = "arjunslaptop";
   users.users.arjuntina.extraGroups = [ "networkmanager" ];
 
   # Upgrading nix
