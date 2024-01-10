@@ -9,13 +9,11 @@
 
   networking.networkmanager.enable = true; # for wifi
   networking.hostName = "arjunslaptop";
-  users.users.arjuntina.extraGroups = [ "networkmanager" ];
 
   # Upgrading nix
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true; # is this necessary? Does it reboot randomly? hm hm
   
-
   # Note: setting fileSystems is generally not
   # necessary, since nixos-generate-config figures them out
   # automatically in hardware-configuration.nix.
@@ -25,4 +23,21 @@
   services.sshd.enable = true;
   # Maybe this as well?
   services.openssh.enable = true;
+
+  # global packages
+  environment.systemPackages = with pkgs; [
+    vim
+  ];
+
+  users.users.arjuntina = {
+    isNormalUser = true;
+    description = "Arjun personal acct";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      git
+      neovim
+      firefox
+      zoom-us
+    ];
+  };
 }
