@@ -7,6 +7,10 @@
   boot.loader.grub.device = nodev;
   boot.loader.grub.efiSupport = true;
 
+  networking.networkmanager.enable = true; # for wifi
+  users.users.arjuntina.extraGroups = [ "networkmanager" ];
+  
+
   # Note: setting fileSystems is generally not
   # necessary, since nixos-generate-config figures them out
   # automatically in hardware-configuration.nix.
@@ -14,4 +18,6 @@
 
   # Enable the OpenSSH server.
   services.sshd.enable = true;
+  # Maybe this as well?
+  services.openssh.enable = true;
 }
