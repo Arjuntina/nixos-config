@@ -9,6 +9,10 @@
 
   networking.networkmanager.enable = true; # for wifi
   users.users.arjuntina.extraGroups = [ "networkmanager" ];
+
+  # Upgrading nix
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true; # is this necessary? Does it reboot randomly? hm hm
   
 
   # Note: setting fileSystems is generally not
