@@ -16,6 +16,9 @@
   networking.networkmanager.enable = true;
   networking.hostName = "arjunslaptop";
 
+  # Time & Date stuff
+  time.timeZone = lib.mkDefault "America/Los_Angeles";
+
   # Upgrading nix
   # What way can I do this manually?
   system.autoUpgrade.enable = true;
