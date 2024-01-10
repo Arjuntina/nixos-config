@@ -18,7 +18,7 @@
 
   # Time & Date stuff
   # time.timeZone = lib.mkDefault "America/Los_Angeles"; -- manually
-  services.automatic-timezoned.enable = true; # -- automatically?
+  services.automatic-timezoned.enable = true; # -- automatically? (a way to invoke this manually?)
 
   # Upgrading nix
   # What way can I do this manually?
