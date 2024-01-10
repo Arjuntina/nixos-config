@@ -17,7 +17,8 @@
   networking.hostName = "arjunslaptop";
 
   # Time & Date stuff
-  time.timeZone = lib.mkDefault "America/Los_Angeles";
+  # time.timeZone = lib.mkDefault "America/Los_Angeles"; -- manually
+  services.automatic-timezoned.enable = true; # -- automatically?
 
   # Upgrading nix
   # What way can I do this manually?
