@@ -113,6 +113,7 @@
       inkscape
       gimp
       vscodium
+      zathura
     ];
   };
 
