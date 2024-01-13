@@ -100,12 +100,16 @@
     packages = with pkgs; [
       # text editor
       neovim
-      git
+      # background processes
       wl-clipboard
+      # CLI programs
+      git
+      htop
       # GUI applications
       firefox
       libreoffice
       anki
+      vscodium
     ];
   };
 
