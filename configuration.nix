@@ -107,8 +107,9 @@
       htop
       # GUI applications
       firefox
-      libreoffice
+      obsidian
       anki
+      libreoffice
       stellarium
       inkscape
       gimp
