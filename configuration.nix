@@ -104,6 +104,8 @@
       wl-clipboard
       # GUI applications
       firefox
+      libreoffice
+      anki
     ];
   };
 
