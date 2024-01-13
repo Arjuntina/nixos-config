@@ -1,62 +1,147 @@
-{ config, pkgs, ... }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   # Kernel settings
-  boot.kernel.sysctl = { "vm.swappiness" = 10;}; # slider from 1-100 which determines how "agressively" to use swap (default = 60 on most distros)
+  # boot.kernel.sysctl = {"vm.swappiness" = 10;}; # slider from 1-100 which determines how "aggressively" to use swap (default = 60 on most distros)
 
-  # boot menu!
-  boot.loader.systemd-boot.enable = false; # want to boot with GRUB
-  boot.loader.grub.device = nodev;
-  boot.loader.grub.efiSupport = true;
-
-  # wifi stuff
-  networking.networkmanager.enable = true;
-  networking.hostName = "arjunslaptop";
-
-  # Time & Date stuff
-  # time.timeZone = lib.mkDefault "America/Los_Angeles"; -- manually
-  services.automatic-timezoned.enable = true; # -- automatically? (a way to invoke this manually?)
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # switch to grub options? maybe try switching on VM or other machine to test hm hm
+  # boot.loader.systemd-boot.enable = false;
+  # boot.loader.grub.device = nodev;
+  # boot.loader.grub.efiSupport = true;
 
   # Upgrading nix
-  # What way can I do this manually?
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true; # is this necessary? Does it reboot randomly? hm hm
-  
-  # Note: setting fileSystems is generally not
-  # necessary, since nixos-generate-config figures them out
-  # automatically in hardware-configuration.nix.
-  #fileSystems."/".device = "/dev/disk/by-label/nixos";
+  # is there a way I can do this manually>
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.allowReboot = true; # is this necessary? Does it reboot randomly? hm hm
 
-  # Enable the OpenSSH server. Not really sure?
-  services.sshd.enable = true;
-  # Maybe this as well?
-  services.openssh.enable = true;
 
-  # global packages
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  networking.hostName = "arjunslaptop"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Automatic Garbage Collection
-  # What way can I do this manually?
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+  # services.automatic-timezoned.enable = true; -- does automatically? hm hm
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
-  users.users.arjuntina = {
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.arjunslaptop = {
     isNormalUser = true;
     description = "Arjun personal acct";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      git
+      # text editor
       neovim
+      git
+      wl-clipboard
+      # GUI applications
       firefox
-      zoom
     ];
   };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "23.11"; # Did you read the comment?
+
 }
