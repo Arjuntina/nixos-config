@@ -109,6 +109,9 @@
       firefox
       libreoffice
       anki
+      stellarium
+      inkscape
+      gimp
       vscodium
     ];
   };
