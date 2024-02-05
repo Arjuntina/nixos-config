@@ -111,15 +111,25 @@
       anki
       libreoffice
       stellarium
+      discord
       inkscape
       gimp
       vscodium
       zathura
+      blender
+      zoom-us
+      chromium
+      cinnamon.nemo
+      samba
+      alacritty
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0" # sigh i'm not sure why but apparently electron is EOL -- hopefully obsidian package updates in future
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
