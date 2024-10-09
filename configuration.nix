@@ -163,6 +163,8 @@
       ## Gaming
       (retroarch.override {
         cores = with libretro; [
+	  #N
+	  mesen
 	  bsnes
         ];
       })
