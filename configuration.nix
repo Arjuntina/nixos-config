@@ -179,6 +179,11 @@
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = ["arjuntina"];
+  virtualisation.virtualbox.guest.enable = true;
+  #virtualisation.virtualbox.guest.dragAndDrop = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -190,8 +195,10 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
-    fira-code-nerdfont
     font-awesome
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    fira
+    
   ];
 
 
