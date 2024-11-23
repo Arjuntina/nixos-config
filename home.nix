@@ -113,6 +113,17 @@
 	programs = {
 		zsh = {
 			enable = true;
+
+            # Extra Configuration
+            initExtra = ''
+                # ALIAS commands:
+                # for nixos-rebuild switch
+                alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/'
+                # for launching vim (neovim)
+                alias v = 'vim'
+            '';
+
+            # Ease of use
 			autosuggestion.enable = true;
 			syntaxHighlighting.enable = true;
 			oh-my-zsh = {
