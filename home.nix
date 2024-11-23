@@ -120,7 +120,7 @@
                 # for nixos-rebuild switch
                 alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/'
                 # for launching vim (neovim)
-                alias v = 'vim'
+                alias v='vim'
             '';
 
             # Ease of use
