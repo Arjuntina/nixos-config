@@ -1,0 +1,137 @@
+# Mod keys
+set $mod Mod4
+set $ALT Mod1
+
+# Running Programs
+# start a terminal
+bindsym $mod+Return exec alacritty
+# start rofi (a program launcher)
+bindsym $mod+space exec rofi -show drun
+
+# font for window titles. ISO 10646 = Unicode
+font pango:FiraCode Nerd Font Propo 18
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+# kill focused window
+bindsym $mod+Q kill
+bindsym $ALT+F4 kill
+
+# startup apps and window decs
+default_orientation horizontal
+workspace_layout tabbed
+new_window 1pixel
+
+# window colours: border background text
+client.focused        #0F0F0F #7FB256 #F5F5FF
+client.focused_inactive    #0F0F0F #7FB256 #E5E5E5
+client.unfocused    #0F0F0F #5697B2 #E5E5E5
+client.urgent        #0F0F0F #BC9B54 #E5E5E5
+
+
+# change focus
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $ALT+Tab focus right
+bindsym $ALT+Shift+Tab focus left
+
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+t fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+z layout stacking
+bindsym $mod+x layout tabbed
+bindsym $mod+c layout default
+
+# toggle tiling / floating
+bindsym $mod+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+s focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindcode $mod+d focus child
+
+# I3 options (configure and reload)
+# reload the configuration file
+bindsym $mod+Shift+R reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# bindsym keycombo restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+Q exit
+
+
+# Window Movement
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+# move focused container to workspace
+# Keybinds look weird because the shift number characters are used here
+bindsym $mod+Shift+exclam move container to workspace 1
+bindsym $mod+Shift+at move container to workspace 2
+bindsym $mod+Shift+numbersign move container to workspace 3
+bindsym $mod+Shift+dollar move container to workspace 4
+bindsym $mod+Shift+percent move container to workspace 5
+bindsym $mod+Shift+asciicircum move container to workspace 6
+bindsym $mod+Shift+ampersand move container to workspace 7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+# Resize Windows
+bindsym $mod+Shift+H resize grow left 10 px or 10 ppt
+bindsym $mod+Shift+N resize shrink left 10 px or 10 ppt
+bindsym $mod+Shift+J resize grow down 10 px or 10 ppt
+bindsym $mod+Shift+M resize shrink down 10 px or 10 ppt
+bindsym $mod+Shift+K resize grow up 10 px or 10 ppt
+bindsym $mod+Shift+L resize shrink up 10 px or 10 ppt
+#bindsym $mod+Shift_semicolon resize grow right 10 px or 10 ppt
+#bindsym $mod+Shift+colon resize shrink right 10 px or 10 ppt
+# Move windows around
+# move focused window
+bindsym $mod+Ctrl+H move left
+bindsym $mod+Ctrl+J move down
+bindsym $mod+Ctrl+K move up
+bindsym $mod+Ctrl+L move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command conky
+        position top
+        font pango:FiraCode Nerd Font Propo 18
+        workspace_buttons yes
+        colors  {
+            background #0F0F0F
+                statusline #D5D5D5
+                focused_workspace #F5F5FF #7FB256
+                active_workspace #E5E5E5 #5697B2
+                inactive_workspace #E5E5E5 #5697B2
+                urgent_workspace #E5E5E5 #BC9B54
+        }
+}

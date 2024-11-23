@@ -29,25 +29,25 @@
     in [
         # CLI programs
         htop
+	fastfetch
 
         # CLI Utilities
+	starship
         gnumake
         gcc
         killall
+	ripgrep   # For nvim telescope
+	gdb
 
         # Backend document stuff?
         texliveBasic
         pandoc
         quarto
 
-        # Terminal
-        alacritty
-
         # Programming?
         # Python
         (pkgs.python3.withPackages (python-pkgs: [
             python312Packages.tkinter
-            python312Packages.manim
         ]))
 
         # Launchers (add dmenu one day maybe)
@@ -88,7 +88,7 @@
         virtualbox
         ## Utility
         flameshot
-        cinnamon.nemo
+        nemo
         ## Gaming
         (retroarch.override {
             cores = with libretro; [
@@ -97,13 +97,29 @@
             ];
         })
 
-        # What is this?
-        tree
     ];
 
 	imports = [
 		./programs/programs.nix
+		./windowManagers/windowManagers.nix
 	];
+
+	programs.starship = {
+		enable = true;
+		enableZshIntegration = true;
+		settings = builtins.fromTOML (builtins.readFile ./programs/starship/starshipConfig.toml);
+	};
+
+	programs = {
+		zsh = {
+			enable = true;
+			autosuggestion.enable = true;
+			syntaxHighlighting.enable = true;
+			oh-my-zsh = {
+				enable = true;
+			};
+		};
+	};
 
  	home.stateVersion = "23.11";
 }

@@ -1,0 +1,3 @@
+-- was causing errors
+-- tbh i don't even know what plenary does so...
+-- require("plenary").setup()

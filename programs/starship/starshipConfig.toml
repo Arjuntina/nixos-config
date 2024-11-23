@@ -1,0 +1,231 @@
+# TODO: Merge and make nice!!!
+
+# Make prompt a single line
+# [line_break]
+# disabled = true
+
+# Pastel Powerline Prompt
+format = """
+[](#9A348E)\
+$os\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+$git_status\
+$docker_context\
+[](fg:#FCA17D bg:#75B21B)\
+$c\
+$conda\
+$haskell\
+$java\
+$kotlin\
+$lua\
+$nodejs\
+$python\
+$rlang\
+$rust\
+[](fg:#75B21B bg:#33658A)\
+$time\
+[ ](fg:#33658A)\ 
+"""
+
+[os]
+style = "bg:#9A348E"
+disabled = false # Disabled by default
+[os.symbols]
+Android = " "
+Arch = " "
+Debian = " "
+Fedora = " "
+Gentoo = " "
+Linux = " "
+Manjaro = " "
+Mint = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+Pop = " "
+Ubuntu = " "
+Unknown = " "
+
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "󰇘/"
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+# Git stuff
+[git_branch]
+symbol = " "
+style = "bg:#FCA17D"
+format = '[ $symbol $branch ]($style)'
+[git_commit]
+tag_symbol = '  '
+[git_status]
+style = "bg:#FCA17D"
+format = '[$all_status$ahead_behind ]($style)'
+[docker_context]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+
+# Coding languages
+# I think?
+# Tbh there's SO many here and I'm not entirely sure what's what
+[aws]
+symbol = "  "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[buf]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[c]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[conda]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[crystal]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[dart]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[elixir]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[elm]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[fennel]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[golang]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[guix_shell]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[gradle]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[haskell]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[haxe]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[java]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[julia]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[kotlin]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[lua]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[meson]
+symbol = "󰔷 "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[nim]
+symbol = "󰆥 "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[nix_shell]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[nodejs]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[ocaml]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[package]
+symbol = "󰏗 "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[perl]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[php]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[pijul_channel]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[python]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[rlang]
+symbol = "󰟔 "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[ruby]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[rust]
+symbol = "󱘗 "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[scala]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[swift]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+[zig]
+symbol = " "
+style = "bg:#75B21B"
+format = '[ $symbol]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[  $time ]($style)'
