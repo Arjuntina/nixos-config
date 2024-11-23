@@ -1,0 +1,189 @@
+# Config guide: https://github.com/TwiggieSmallz/Default-Alacritty-TOML-Config
+
+# Imports
+general.import = []
+
+general.live_config_reload = true
+
+# SHELL
+# Should not configure what shell to use in this configuration file (should instead use default shell in configuration.nix)
+
+# WINDOW
+[window]
+dimensions = { columns = 150, lines = 40 }
+position = "None"
+padding = { x = 12, y = 12 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 0.8
+blur = true
+startup_mode = "Windowed"
+title = "Alacritty"
+dynamic_title = true
+# class = ____
+decorations_theme_variant = "None"
+resize_increments = false
+
+
+# SCROLLING
+[scrolling]
+history = 10000
+multiplier = 3
+
+
+# FONT
+
+[font]
+size = 13
+normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
+bold = { family = "Iosevka Nerd Font Mono", style = "Bold" }
+italic = { family = "Iosevka Nerd Font Mono", style = "Italic" }
+builtin_box_drawing = true
+
+# COLORS
+# This section documents the [colors] table of the configuration file.
+# Colors are specified using their hexadecimal values with a # prefix: #RRGGBB.
+
+# colors primary
+# This section documents the [colors.primary] table of the configuration file.
+
+[colors]
+# normal
+# This section documents the [colors.normal] table of the configuration.
+# Defaults from Alacritty.org used.
+[colors.normal]
+black = "#181818"
+red = "#ac4242"
+green = "#90a959"
+yellow = "#f4bf75"
+blue = "#6a9fb5"
+magenta = "#aa759f"
+cyan = "#75b5aa"
+white = "#d8d8d8"
+# bright
+# This section documents the [colors.bright] table of the configuration.
+# Defaults from Alacritty.org used.
+[colors.bright]
+black = "#6b6b6b"
+red = "#c55555"
+green = "#aac474"
+yellow = "#feca88"
+blue = "#82b8c8"
+magenta = "#c28cb8"
+cyan = "#93d3c3"
+white = "#f8f8f8"
+# dim
+# This section documents the [colors.dim] table of the configuration.
+# If the dim colors are not set, they will be calculated automatically based on the normal colors.
+[colors.dim]
+black = "#0f0f0f"
+red = "#712b2b"
+green = "#5f6f3a"
+yellow = "#a17e4d"
+blue = "#456877"
+magenta = "#704d68"
+cyan = "#4d7770"
+white = "#8e8e8e"
+
+
+# BELL - no idea what this is??
+[bell]
+animation = "Linear"
+duration = 0
+#color = "#ffffff"
+#command = "None"
+
+
+# SELECTION
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+
+# CURSOR
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+vi_mode_style = {shape = "Block", blinking = "Off"}
+unfocused_hollow = true
+thickness = 0.15
+
+
+# TERMINAL
+#[terminal]
+
+
+# MOUSE
+[mouse]
+hide_when_typing = false
+# bindings = [{ <mouse>, <mods>, <mode>, <action> | <chars> },]
+# bindings = [
+# { mouse = "Right", mods = "Control", action = "Paste" },
+# ]
+
+
+# HINTS
+#[hints]
+
+# KEYBOARD
+[keyboard]
+# FIGURE OUT HOW TO DISABLE WHEN NEOVIM IS RUNNING
+bindings = [
+	{ key = "N", mods = "Control", action = "CreateNewWindow" },
+	# Scrolling the terminal -- figure out sometime bc it disables vi?
+	# { key = "U", mods = "Control", action = "ScrollHalfPageUp" },
+	# { key = "D", mods = "Control", action = "ScrollHalfPageDown" },
+	# System monitor
+	# { key = "H", mods = "Control", command = "htop" },
+	{ key = "Z", mods = "Control", action = "ToggleViMode" },
+	{ key = "F", mods = "Control", action = "SearchForward" },
+	{ key = "F", mods = "Control | Shift", action = "SearchBackward" },
+]
+
+
+# DEBUG
+# This section documents the [debug] table of the configuration file.
+# Debug options are meant to help troubleshoot issues with Alacritty. These can change or be removed entirely without warning, so their stability shouldn't be relied upon.
+
+# render_timer = true | false
+# Display the time it takes to draw each frame.
+# Default: false
+
+# persistent_logging = true | false
+# Keep the log file after quitting Alacritty.
+# Default: false
+# log_level = "Off" | "Error" | "Warn" | "Info" | "Debug" | "Trace"
+# Default: "Warn"
+
+# To add extra libraries to logging ALACRITTY_EXTRA_LOG_TARGETS variable can be used.
+# Example:
+
+# ALACRITTY_EXTRA_LOG_TARGETS="winit;vte" alacritty -vvv
+
+# renderer = "glsl3" | "gles2" | "gles2_pure" | "None"
+# Force use of a specific renderer, "None" will use the highest available one.
+# Default: "None"
+
+# print_events = true | false
+# Log all received window events.
+# Default: false
+
+# highlight_damage = true | false
+# Highlight window damage information.
+# Default: false
+
+# prefer_egl = true | false
+# Use EGL as display API if the current platform allows it. Note that transparency may not work with EGL on Linux/BSD.
+# Default: false
+
+#[debug]
+
+
+# SEE ALSO
+# alacritty(1), alacritty-msg(1), alacritty-bindings(5)
+
+# BUGS
+# Found a bug? Please report it at https://github.com/alacritty/alacritty/issues.
+
+# MAINTAINERS
+# · Christian Duerr <contact@christianduerr.com>
+# · Kirill Chibisov <contact@kchibisov.com>
