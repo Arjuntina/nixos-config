@@ -1,3 +1,3 @@
-# nixFiles
+# nixos-config
 
-where to put config stuff for Nix stuffies
+Configuration files for my nixos system
