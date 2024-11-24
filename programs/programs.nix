@@ -22,8 +22,8 @@
 		enable = true;
 	};
 
-    #mpv = {
-    #    enable = true;
-    #};
+    mpv = {
+        enable = true;
+    };
 
 }
