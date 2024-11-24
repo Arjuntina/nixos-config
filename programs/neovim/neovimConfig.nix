@@ -126,6 +126,13 @@
 					config = convertLuaFile ./plugins/indentBlankline.lua;
 				}
 
+                # Whichkey
+                # Let a neovim popup window remind me of my <leader> keybinds
+                {
+                    plugin = which-key-nvim;
+                    # config = convertLuaFile ./plugins/whichKey.lua;
+                }
+
 				# LSP Setup
 				# Mason just so that the other plugins don't break
 				mason-nvim

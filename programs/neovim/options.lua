@@ -40,8 +40,8 @@ cmd("set expandtab")
 -- Should always want this "on"
 opt.autoindent = true;
 -- Smartindent:
--- no real clue what it does but it sounds nice
-opt.smartindent = true;
+-- sounds nice, but messes up indents of nix comments :(
+-- opt.smartindent = true;
 
 -- Line Settings
 -- This allows us to see what absolute line number the cursor is on

@@ -1,9 +1,9 @@
 {config, pkgs, lib, ...}: 
 
 {
- 	home.username = "arjuntina";
- 	home.homeDirectory = "/home/arjuntina";
-	programs.home-manager.enable = true;
+    home.username = "arjuntina";
+    home.homeDirectory = "/home/arjuntina";
+    programs.home-manager.enable = true;
 
 	home.packages = with pkgs;
     let
