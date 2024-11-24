@@ -48,6 +48,7 @@
         # Python
         (pkgs.python3.withPackages (python-pkgs: [
             python312Packages.tkinter
+            python312Packages.manim
         ]))
 
         # Launchers (add dmenu one day maybe)
@@ -76,7 +77,7 @@
         ## Video
         vlc
         mpv
-        manim
+        # manim
         ## Coding
         RStudio-with-my-packages
         vscodium
