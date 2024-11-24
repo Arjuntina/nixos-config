@@ -1,17 +1,14 @@
 local lspconfig = require('lspconfig')
 
--- lspconfig.nil.setup{}
-lspconfig.lua_ls.setup{
+lspconfig.lua_ls.setup{ -- for Lua
 	settings = {
 		Lua = {
 			diagnostics = {
-				globals = { "vim" }
+				globals = { "vim" } -- idk apparently this is supposed to be good?
 			}
 		}
 	}
 }
-lspconfig.clangd.setup{}
-lspconfig.pyright.setup{}
-lspconfig.nil_ls.setup{}
-
--- vim.api.nvim_exec_autocmds("FileType", {})
+lspconfig.clangd.setup{} -- for C
+lspconfig.pyright.setup{} -- for python
+lspconfig.nil_ls.setup{} -- for nix

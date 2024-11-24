@@ -12,7 +12,6 @@
 
 	config = {
 		# NIX STUFF
-
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 
@@ -36,7 +35,24 @@
 
 		# Configure keymap in X11
 		services.xserver.xkb.layout = "us";
-		# services.xserver.xkb.options = "eurosign:e,caps:escape";
+        # Configure keybinds with keyd
+        services.keyd = {
+            enable = true;
+            keyboards = {
+                # The name is just the name of the configuration file, it does not really matter
+                default = {
+                    ids = [ "*" ]; # what goes into the [id] section -- here we select all keyboards
+                    settings = {
+                        main = {
+                            # Move capslock to escape when pressed & control when held
+                            capslock = "overload(control, esc)";
+                            # Remaps the escape key to capslock
+                            esc = "capslock";
+                        };
+                    };
+                };
+            };
+        };
 
 		# Apple webcam
 		hardware.facetimehd.enable = true;
