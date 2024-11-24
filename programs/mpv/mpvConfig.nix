@@ -13,6 +13,19 @@
 			
 			enable = true;
 
+            config = {
+                keep-open="always";  # prevent mpv from closing and from going to the next entry in a playlist automatically
+
+                # For modernx UI
+                osc="no";
+                border="no";
+            };
+
+            scripts = with pkgs.mpvScripts; [
+                thumbfast
+                modernx
+            ];
+
 		};
 	};
 
