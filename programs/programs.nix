@@ -5,6 +5,7 @@
 		./neovim/neovimConfig.nix
 		./alacritty/alacrittyConfig.nix
         ./mpv/mpvConfig.nix
+        ./yt-dlp/yt-dlp.nix
 	];
 
 	# Enable/disable programs & some options through custom wrappers
@@ -23,6 +24,10 @@
 	};
 
     mpv = {
+        enable = true;
+    };
+
+    yt-dlp = {
         enable = true;
     };
 
