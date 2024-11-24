@@ -76,7 +76,6 @@
         imagej
         ## Video
         vlc
-        mpv
         # manim
         ## Coding
         RStudio-with-my-packages
@@ -132,6 +131,14 @@
 			};
 		};
 	};
+
+
+	# CLEAN THIS UP!
+	# hyprland stuff! 
+	wayland.windowManager.hyprland = {
+		enable = false;
+	};
+
 
  	home.stateVersion = "23.11";
 }

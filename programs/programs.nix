@@ -4,6 +4,7 @@
 	imports = [
 		./neovim/neovimConfig.nix
 		./alacritty/alacrittyConfig.nix
+        ./mpv/mpvConfig.nix
 	];
 
 	# Enable/disable programs & some options through custom wrappers
@@ -21,10 +22,8 @@
 		enable = true;
 	};
 
-	# CLEAN THIS UP!
-	# hyprland stuff! 
-	wayland.windowManager.hyprland = {
-		enable = false;
-	};
+    #mpv = {
+    #    enable = true;
+    #};
 
 }
