@@ -37,6 +37,7 @@
 			# Read in from the options.lua file so that this configuration file doesn't get too crowded
 			extraLuaConfig = ''
 				${builtins.readFile ./options.lua}
+                ${builtins.readFile ./plugins/cmp/completions.lua}
 			'';
 
 			# Define the plugins to install & use on the system
@@ -159,18 +160,30 @@
                 		# vim-nix
 
 				# Autocompletion
-				#luasnip
-				#cmp_luasnip
-				# Cmp -- plugin for autocomplete
+                # Since there's so many plugins with mixed functionality, all the configuration will be located in a "completions.lua" file in ./plugins/cmp/completions.lua
+				# Cmp -- autocompletion engine
 				{
 				 	plugin = nvim-cmp;
-				 	config = convertLuaFile ./plugins/cmp.lua;
 				}
+				# luasnip
+                # source of snippets & snippet expansion tool 
+				{
+                    plugin = luasnip;
+                }
+                # cmp_luasnip
+                # provides nvim-cmp with snippets to expand before luasnip expands them
+                {
+                    plugin = cmp_luasnip;
+                }
+                # Friendly snippets
+                # snippet collections from various programming languages 
+                {
+                    plugin = friendly-snippets;
+                }
+                # a completion source for nvim-cmp that offers completion from the installed language server
 				{
 					plugin = cmp-nvim-lsp;
 				}
-
-
 			];
 
 			# Extra packages? Am using for lsp servers but might change as i don't really understand them rn
