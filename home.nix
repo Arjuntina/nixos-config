@@ -24,6 +24,12 @@
                 broom
                 viridis
                 patchwork
+                reshape2
+                shiny
+                readr
+                sf
+                maps
+                DT
             ];
         };
     in [
