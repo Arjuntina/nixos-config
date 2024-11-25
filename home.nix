@@ -29,15 +29,17 @@
     in [
         # CLI programs
         htop
-	fastfetch
+	    fastfetch
 
         # CLI Utilities
-	starship
+	    starship
         gnumake
         gcc
         killall
-	ripgrep   # For nvim telescope
-	gdb
+	    ripgrep   # For nvim telescope
+	    gdb
+        # For yt-dlp
+        ffmpeg_7
 
         # Backend document stuff?
         texliveBasic
@@ -121,6 +123,7 @@
                 alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/'
                 # for launching vim (neovim)
                 alias v='vim'
+                alias y='yt-dlp'
             '';
 
             # Ease of use
