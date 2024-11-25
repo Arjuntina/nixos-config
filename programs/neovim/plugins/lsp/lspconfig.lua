@@ -13,5 +13,7 @@ lspconfig.clangd.setup{} -- for C
 lspconfig.pyright.setup{} -- for python
 lspconfig.nil_ls.setup{} -- for nix
 
-vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, {desc = "see the definition of various code statements"})
+vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, {desc = "hover"})
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {desc = "go to definition"})
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {desc = "code actions"})
 
