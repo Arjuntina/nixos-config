@@ -26,12 +26,11 @@ cmp.setup({
 	}),
     -- for determining the sources of the autocomplete segments
     sources = cmp.config.sources({
-        -- { name = 'nvim_lsp' },
+        { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
     }, {
         { name = 'buffer' },
     })
 })
-
 
 

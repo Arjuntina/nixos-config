@@ -37,7 +37,8 @@
 			# Read in from the options.lua file so that this configuration file doesn't get too crowded
 			extraLuaConfig = ''
 				${builtins.readFile ./options.lua}
-                ${builtins.readFile ./plugins/cmp/completions.lua}
+				${builtins.readFile ./lsp.lua}
+				${builtins.readFile ./completions.lua}
 			'';
 
 			# Define the plugins to install & use on the system
@@ -49,11 +50,11 @@
 					config = (if  config.neovim.colorscheme == "catppuccin"
 						then
 							lib.strings.concatStrings [
-								(convertLuaFile ./plugins/catppuccin.lua)
+								(convertLuaFile ./plugins/colorscheme/catppuccin.lua)
 								(convertLua "vim.cmd.colorscheme \"catppuccin\"")
 							]
 						else 
-							(convertLuaFile ./plugins/catppuccin.lua)
+							(convertLuaFile ./plugins/colorscheme/catppuccin.lua)
 					);
 				}
 				{
@@ -61,11 +62,11 @@
 					config = (if  config.neovim.colorscheme == "tokyonight"
 						then
 							lib.strings.concatStrings [
-								(convertLuaFile ./plugins/tokyonight.lua)
+								(convertLuaFile ./plugins/colorscheme/tokyonight.lua)
 								(convertLua "vim.cmd.colorscheme \"tokyonight\"")
 							]
 						else 
-							(convertLuaFile ./plugins/tokyonight.lua)
+							(convertLuaFile ./plugins/colorscheme/tokyonight.lua)
 					);
 				}
 
@@ -127,63 +128,36 @@
 					config = convertLuaFile ./plugins/indentBlankline.lua;
 				}
 
-                # Whichkey
-                # Let a neovim popup window remind me of my <leader> keybinds
-                {
-                    plugin = which-key-nvim;
-                    # config = convertLuaFile ./plugins/whichKey.lua;
-                }
+				# Whichkey
+				# Let a neovim popup window remind me of my <leader> keybinds
+				{
+				    plugin = which-key-nvim;
+				    # config = convertLuaFile ./plugins/whichKey.lua;
+				}
 
-				# LSP Setup
-				# Mason just so that the other plugins don't break
+				# LSP Stuff
+                # all configuration defined in the ./lsp.lua file
+				# Mason -- a LSP Installation client that doesn't work on nix, but is installed here so that the other plugins don't break
 				mason-nvim
-				# Mason-lspconfig -- may set the aliases for language servers properly? idk
-				{
-					plugin = mason-lspconfig-nvim;
-					config = convertLuaFile ./plugins/lsp/masonLsp.lua;
-				}
-				# LSPconfig -- am disabling the config bc it not working but leaving it here bc it might(?) be a dependency for lazy-lsp below
-				{
-					plugin = nvim-lspconfig;
-					config = convertLuaFile ./plugins/lsp/lspconfig.lua;
-				}
-				# Lazy-LSP
-				# Should use this and follow the documentation because it seems like it was built with Nix & Home-manager in mind!!!!
-				# If used properly should be able to replace both masonLsp & nvim-lspconfig described above
-				#{
-				#	plugin = lazy-lsp-nvim;
-				#	config = convertLuaFile ./plugins/lsp/lazyLsp.lua;
-				#}
-				# Other stuff
-				# vim-nix - a plugin for nix highlighting/syntax
-                		# Disabled because, although it sounds nice in theory, it messes up the indentation significantly
-                		# vim-nix
+				# Mason-lspconfig -- program that sets the aliases for the language servers properly
+				mason-lspconfig-nvim
+				# LSPconfig -- main program that sets up and configures language servers for neovim
+			    nvim-lspconfig
+				# Lazy-LSP -- a lsp client built for nix in mind, but I could not figure out how to set it up properly
 
 				# Autocompletion
-                # Since there's so many plugins with mixed functionality, all the configuration will be located in a "completions.lua" file in ./plugins/cmp/completions.lua
-				# Cmp -- autocompletion engine
-				{
-				 	plugin = nvim-cmp;
-				}
-				# luasnip
-                # source of snippets & snippet expansion tool 
-				{
-                    plugin = luasnip;
-                }
-                # cmp_luasnip
-                # provides nvim-cmp with snippets to expand before luasnip expands them
-                {
-                    plugin = cmp_luasnip;
-                }
-                # Friendly snippets
-                # snippet collections from various programming languages 
-                {
-                    plugin = friendly-snippets;
-                }
-                # a completion source for nvim-cmp that offers completion from the installed language server
-				{
-					plugin = cmp-nvim-lsp;
-				}
+				# Since there's so many plugins with mixed functionality, all the configuration will be located in ./completions.lua
+				# Cmp -- main autocompletion engine which displays the completion box and all that jazz
+				nvim-cmp
+				# cmp_luasnip -- provides nvim-cmp with snippet translations from luasnip (below) & friendly snippets (below)
+				cmp_luasnip
+				# luasnip - a snippet expansion tool
+				luasnip
+				# Friendly snippets -- snippet collections from various programming languages (& VSCode?)
+			    friendly-snippets
+				# Cmp-nvim-lsp -- a completion source for nvim-cmp that offers completion from the installed language server
+                # Configuration for this plugin is actually defined in ./lsp.lua because it has to be loaded into various language servers
+				cmp-nvim-lsp
 			];
 
 			# Extra packages? Am using for lsp servers but might change as i don't really understand them rn
@@ -195,5 +169,4 @@
 			];
 		};
 	};
-
 }
