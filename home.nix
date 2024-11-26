@@ -142,12 +142,6 @@
 	};
 
 
-	# CLEAN THIS UP!
-	# hyprland stuff! 
-	wayland.windowManager.hyprland = {
-		enable = false;
-	};
-
 
  	home.stateVersion = "23.11";
 }

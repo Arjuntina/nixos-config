@@ -142,9 +142,6 @@
 			enable = true;
 		};
 
-		# idk what this does but apparently is needed for sway?
-		security.polkit.enable = true;
-
 		# Desktop environment
 		# services.xserver.desktopManager.gnome.enable = true;
 		services.desktopManager.plasma6.enable = true;
@@ -164,9 +161,9 @@
 			enable = true;
 			xwayland.enable = true;
 		};
-		# programs.waybar = {
-		#	enable = true;
-		#};
+		 programs.waybar = {
+			enable = true;
+		};
 
 
 
