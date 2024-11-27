@@ -16,11 +16,10 @@
 
             systemd.enable = true;
 
-            # The code below is generated using the python script ./convert.py, which is nondeclarative!
-            # However, I am using it because I have no idea how to otherwise pass in a file to this function
-            # The input needs to be in the "(list of (JSON value)) or attribute set of (JSON value)" form, which does not make much sense :/
-            # Figure it out someday :/
-            settings = {};
+            # Not really sure why or how but the JSON file needs to be wrapped with a "mainBar" wrapper -- so that the name of the bar is known??? idk
+            settings = {
+                mainBar = builtins.fromJSON (builtins.readFile ./config);
+            };
 
             style = builtins.readFile ./style.css;
 
