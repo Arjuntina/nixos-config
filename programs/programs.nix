@@ -6,6 +6,7 @@
 		./alacritty/alacrittyConfig.nix
         ./mpv/mpvConfig.nix
         ./yt-dlp/yt-dlp.nix
+        ./waybar/waybar.nix
 	];
 
 	# Enable/disable programs & some options through custom wrappers
@@ -28,6 +29,10 @@
     };
 
     yt-dlp = {
+        enable = true;
+    };
+
+    waybar = {
         enable = true;
     };
 
