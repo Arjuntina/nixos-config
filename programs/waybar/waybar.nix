@@ -18,10 +18,10 @@
 
             # Not really sure why or how but the JSON file needs to be wrapped with a "mainBar" wrapper -- so that the name of the bar is known??? idk
             settings = {
-                mainBar = builtins.fromJSON (builtins.readFile ./config);
+                mainBar = builtins.fromJSON (builtins.readFile ./config1/config);
             };
 
-            style = builtins.readFile ./style.css;
+            style = builtins.readFile ./config1/style.css;
 
         };
 	};
