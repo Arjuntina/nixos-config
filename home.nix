@@ -52,17 +52,17 @@
         pandoc
         quarto
 
-        # Programming?
+        # Programming
         # Python
         (pkgs.python3.withPackages (python-pkgs: [
             python312Packages.tkinter
             python312Packages.manim
         ]))
 
-        # Launchers (add dmenu one day maybe)
+        # Desktop stuff
+        ## Launchers (add dmenu one day maybe)
         rofi-wayland
-
-        # Notifications
+        ## Notifications
         swaynotificationcenter
         libnotify
 
@@ -105,6 +105,7 @@
             ];
         })
 
+
     ];
 
 	imports = [
@@ -134,6 +135,7 @@
 
             # Ease of use
 			autosuggestion.enable = true;
+            autocd = true;
 			syntaxHighlighting.enable = true;
 			oh-my-zsh = {
 				enable = true;

@@ -26,7 +26,7 @@
 		# hardware.pulseaudio.enable = true;
 		# OR
 		services.pipewire = {
-			enable = true;
+		    enable = true;
 			pulse.enable = true;
 		};
 
@@ -161,8 +161,9 @@
 			enable = true;
 			xwayland.enable = true;
 		};
-		 programs.waybar = {
-			enable = true;
+        ## TO-DO:: FIGURE OUT WHY IT STARTS ON ITS OWN AND HOW TO POTENTIALLY DISABLE IT!!!!
+		programs.waybar = {
+			enable = false;
 		};
 
 
