@@ -161,10 +161,6 @@
 			enable = true;
 			xwayland.enable = true;
 		};
-        ## TO-DO:: FIGURE OUT WHY IT STARTS ON ITS OWN AND HOW TO POTENTIALLY DISABLE IT!!!!
-		#programs.waybar = {
-		# 	enable = false;
-		#};
 
 
 
