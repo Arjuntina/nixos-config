@@ -2,23 +2,16 @@
 
 {
 	imports = [
-		./neovim/neovimConfig.nix
 		./alacritty/alacrittyConfig.nix
         ./mpv/mpvConfig.nix
-        ./yt-dlp/yt-dlp.nix
+		./neovim/neovimConfig.nix
+        ./rofi/rofi.nix
         ./waybar/waybar.nix
+        ./yt-dlp/yt-dlp.nix
 	];
 
 	# Enable/disable programs & some options through custom wrappers
 	# The options here should be "high level" ones that encompass many changes and be ones I want to change frequently
-
-	neovim = {
-		enable = true;
-
-		# Custom option which declares the colorscheme of neovim so that I don't have to go digging around the configuration files
-		# Options = catppuccin & tokyonight
-		colorscheme = "catppuccin";
-	};
 
 	alacritty = {
 		enable = true;
@@ -28,7 +21,15 @@
         enable = true;
     };
 
-    yt-dlp = {
+	neovim = {
+		enable = true;
+
+		# Custom option which declares the colorscheme of neovim so that I don't have to go digging around the configuration files
+		# Options = catppuccin & tokyonight
+		colorscheme = "catppuccin";
+	};
+
+    rofi = {
         enable = true;
     };
 
@@ -36,4 +37,7 @@
         enable = true;
     };
 
+    yt-dlp = {
+        enable = true;
+    };
 }

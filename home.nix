@@ -60,8 +60,8 @@
         ]))
 
         # Desktop stuff
-        ## Launchers (add dmenu one day maybe)
-        rofi-wayland
+        ## App Launchers (maybe make my own one day?)
+        sirula
         ## Notifications
         swaynotificationcenter
         libnotify
