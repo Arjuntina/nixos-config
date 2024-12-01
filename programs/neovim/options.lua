@@ -59,6 +59,16 @@ configureKey("n", "<leader>wh", "<C-w>h", {desc = "Move window focus left"})
 configureKey("n", "<leader>wj", "<C-w>j", {desc = "Move window focus down"})
 configureKey("n", "<leader>wk", "<C-w>k", {desc = "Move window focus up"})
 configureKey("n", "<leader>wl", "<C-w>l", {desc = "Move window focus right"})
+-- Keybinds to split a window
+configureKey("n", "<leader>wv", "<C-w>v", {desc = "Split a window vertically"})
+configureKey("n", "<leader>ws", "<C-w>s", {desc = "Split a window horizontally"})
+-- Keybinds to resize a window
+configureKey("n", "<leader>w=", "<C-w>+", {desc = "Increase window height"})
+configureKey("n", "<leader>w-", "<C-w>-", {desc = "Decrease window height"})
+configureKey("n", "<leader>w.", "<C-w>>", {desc = "Increase window width"})
+configureKey("n", "<leader>w,", "<C-w><", {desc = "Decrease window width"})
+-- Keybinds to close a window
+configureKey("n", "<leader>wq", "<C-w>q", {desc = "Close an open window"})
 
 -- Mouse usage
 -- I want to use the mouse in visual & normal mode
