@@ -44,6 +44,7 @@
         killall
 	    ripgrep   # For nvim telescope
 	    gdb
+        file      # delete later
         # For yt-dlp
         ffmpeg_7
 
@@ -104,8 +105,8 @@
                 bsnes
             ];
         })
-
-
+        ## Chess
+        scid-vs-pc
     ];
 
 	imports = [
