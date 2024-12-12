@@ -58,6 +58,10 @@
         (pkgs.python3.withPackages (python-pkgs: [
             python312Packages.tkinter
             python312Packages.manim
+
+            # Data Science Stuff
+            python312Packages.numpy
+            python312Packages.pandas
         ]))
 
         # Desktop stuff
@@ -85,7 +89,6 @@
         imagej
         ## Video
         vlc
-        # manim
         ## Coding
         RStudio-with-my-packages
         vscodium
@@ -95,6 +98,9 @@
         stellarium
         ## Virtual Machine
         virtualbox
+        wineWowPackages.waylandFull
+        winetricks
+        dosbox-staging
         ## Utility
         flameshot
         nemo

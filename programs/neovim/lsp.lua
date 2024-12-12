@@ -16,6 +16,7 @@ lspconfig.lua_ls.setup{ -- for Lua
 	},
     capabilities = capabilities
 }
+
 lspconfig.clangd.setup{             -- for C
     capabilities = capabilities
 }
