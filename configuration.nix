@@ -145,6 +145,10 @@
 		# Desktop environment
 		# services.xserver.desktopManager.gnome.enable = true;
 		services.desktopManager.plasma6.enable = true;
+        environment.plasma6.excludePackages = with pkgs.kdePackages; [
+            kwallet
+            kwalletmanager
+        ];
 
 		# X-org window managers
 		services.xserver.windowManager = {

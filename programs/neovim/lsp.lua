@@ -4,7 +4,7 @@ require("mason-lspconfig").setup {
 }
 local lspconfig = require('lspconfig')
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()     -- this apparently ensures that the LSP suggestions are included in the autocomplete box? I think?
 
 lspconfig.lua_ls.setup{ -- for Lua
 	settings = {

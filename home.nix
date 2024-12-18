@@ -30,6 +30,8 @@
                 sf
                 maps
                 DT
+                leaflet
+                terra
             ];
         };
     in [
@@ -89,6 +91,7 @@
         imagej
         ## Video
         vlc
+        kdePackages.kdenlive
         ## Coding
         RStudio-with-my-packages
         vscodium
