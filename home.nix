@@ -58,12 +58,8 @@
         # Programming
         # Python
         (pkgs.python3.withPackages (python-pkgs: [
-            python312Packages.tkinter
-            python312Packages.manim
-
-            # Data Science Stuff
-            python312Packages.numpy
-            python312Packages.pandas
+            # Don't really want to include any packages here bc I would rather use a nix-shell
+            # Unless there happens to be a really "universal" package
         ]))
 
         # Desktop stuff
