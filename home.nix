@@ -9,31 +9,7 @@
     let
         RStudio-with-my-packages = rstudioWrapper.override{
             packages = with rPackages; [
-                devtools
-                curl
-                knitr
-                markdown
                 tidyverse
-                tidymodels
-                gt
-                ggthemes
-                shinylive
-                quarto
-                here
-                tidycensus
-                broom
-                viridis
-                patchwork
-                reshape2
-                shiny
-                readr
-                sf
-                maps
-                DT
-                leaflet
-                terra
-                packrat
-                rsconnect
             ];
         };
     in [
