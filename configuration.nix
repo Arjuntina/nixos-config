@@ -113,7 +113,7 @@
 		# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 		# Set your time zone.
-		time.timeZone = "America/New_York";
+		time.timeZone = "America/Los_Angeles";
 
 		# Select internationalisation properties.
 		i18n.defaultLocale = "en_US.UTF-8";
@@ -145,10 +145,10 @@
 		# Desktop environment
 		# services.xserver.desktopManager.gnome.enable = true;
 		services.desktopManager.plasma6.enable = true;
-        environment.plasma6.excludePackages = with pkgs.kdePackages; [
-            kwallet
-            kwalletmanager
-        ];
+        # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+            # kwallet
+            # kwalletmanager
+        # k];
 
 		# X-org window managers
 		services.xserver.windowManager = {

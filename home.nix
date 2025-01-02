@@ -32,6 +32,8 @@
                 DT
                 leaflet
                 terra
+                packrat
+                rsconnect
             ];
         };
     in [
@@ -132,8 +134,13 @@
             # Extra Configuration
             initExtra = ''
                 # ALIAS commands:
+                # NIX ALIASES
                 # for nixos-rebuild switch
                 alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/'
+                # for nix shells (need to add nix-develop)
+                alias nix-shell='nix-shell --command zsh'
+
+                # OTHER PROGRAM ALIASES
                 # for launching vim (neovim)
                 alias v='vim'
                 alias y='yt-dlp'

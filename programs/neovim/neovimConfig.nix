@@ -158,6 +158,12 @@
 				# Cmp-nvim-lsp -- a completion source for nvim-cmp that offers completion from the installed language server
                 # Configuration for this plugin is actually defined in ./lsp.lua because it has to be loaded into various language servers
 				cmp-nvim-lsp
+
+                # Latex stuff
+                {
+                    plugin = vimtex;
+					config = convertLuaFile ./plugins/vimtex.lua;
+                }
 			];
 
 			# Extra packages? Am using for lsp servers but might change as i don't really understand them rn
