@@ -180,9 +180,6 @@
 
 			# Packages for download
 			# Packages here have since been moved to home manager
-			packages = with pkgs; [
-			];
-
 			shell = pkgs.zsh;
 		};
 		# More program configuration? hm hm hm
@@ -198,6 +195,7 @@
 
 		# Enables command line control of screen brightness
 		programs.light.enable = true;
+
 
 		# Root user packages & configuration options
 		environment.systemPackages = [ #had to get rid of the with pkgs; line unfortunately :(

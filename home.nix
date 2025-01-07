@@ -12,6 +12,7 @@
                 tidyverse
             ];
         };
+
     in [
         # CLI programs
         htop
@@ -81,6 +82,7 @@
         ## Utility
         flameshot
         nemo
+        qbittorrent
         ## Gaming
         (retroarch.override {
             cores = with libretro; [
