@@ -62,7 +62,6 @@
         inkscape
         gimp
         blender
-        zathura
         imagej
         ## Video
         vlc

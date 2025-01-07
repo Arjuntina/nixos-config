@@ -8,6 +8,7 @@
         ./rofi/rofi.nix
         ./waybar/waybar.nix
         ./yt-dlp/yt-dlp.nix
+        ./zathura/zathura.nix
 	];
 
 	# Enable/disable programs & some options through custom wrappers
@@ -38,6 +39,10 @@
     };
 
     yt-dlp = {
+        enable = true;
+    };
+
+    zathura = {
         enable = true;
     };
 }
