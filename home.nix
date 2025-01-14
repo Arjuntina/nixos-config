@@ -69,6 +69,7 @@
         ## Coding
         RStudio-with-my-packages
         vscodium
+        android-studio
         ## Learning
         anki-bin
         ## Sciency

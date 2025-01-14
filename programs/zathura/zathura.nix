@@ -13,7 +13,7 @@
 			
 			enable = true;
 
-			settings = builtins.readFile ./zathurarc;
+			extraConfig = builtins.readFile ./zathurarc;
 
 		};
 	};
