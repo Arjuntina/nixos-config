@@ -40,6 +40,8 @@
             # Don't really want to include any packages here bc I would rather use a nix-shell
             # Unless there happens to be a really "universal" package
         ]))
+        # Java
+        jdk8
 
         # Desktop stuff
         ## App Launchers (maybe make my own one day?)
