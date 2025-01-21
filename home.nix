@@ -23,6 +23,7 @@
         gnumake
         gcc
         killall
+        tree      # For vieweing directory trees
 	    ripgrep   # For nvim telescope
 	    gdb
         file      # delete later
