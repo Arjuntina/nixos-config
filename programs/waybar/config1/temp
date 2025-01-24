@@ -1,0 +1,8 @@
+"pulseaudio": {
+    "format": "{icon} {volume}%",
+        "format-icons": ["", "", ""],
+        "format-muted": "",
+        "states": {
+            "silent": 0,
+        }
+},
