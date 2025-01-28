@@ -34,7 +34,7 @@
 		services.libinput.enable = true;
 
 		# Configure keymap in X11
-		services.xserver.xkb.layout = "us";
+		services.xserver.xkb.layout = "us"; # add latam as a keyboard variant?
         # Configure keybinds with keyd
         services.keyd = {
             enable = true;

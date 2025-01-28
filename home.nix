@@ -49,6 +49,7 @@
         # Desktop stuff
         ## App Launchers (maybe make my own one day?)
         sirula
+        wmenu
         ## Notifications
         swaynotificationcenter
         libnotify
