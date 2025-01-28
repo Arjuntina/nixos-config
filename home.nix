@@ -31,9 +31,11 @@
         ffmpeg_7
 
         # Backend document stuff?
-        texliveBasic
+        ## Latex
+        texliveFull
+        texlab
+        ## Other (idk what this is)
         pandoc
-        quarto
 
         # Programming
         # Python
