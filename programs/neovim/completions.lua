@@ -68,22 +68,30 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
+local line_begin = require("luasnip.extras.expand_conditions").line_begin -- line begin condition
+
 
 
 -- The code below allows tab & shift-tab to expand/unexpand snippets?
 -- Not sure of the exact specifics - could be something to look into!
 vim.cmd[[
     " Use Tab to expand and jump through snippets
+    " Two derivations are given below (imap & smap) to allow the keybind to work in insert & select (visual) mode
     imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
     smap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
 
     " Use Shift-Tab to jump backwards through snippets
+    " Two derivations are given below (imap & smap) to allow the keybind to work in insert & select (visual) mode
     imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
     smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
 ]]
 
--- The code below allows certain snippets to be autoexpandable
-ls.config.setup({ enable_autosnippets = true })
+ls.config.setup({
+    -- This line allows certain snippets to be autoexpandable
+    enable_autosnippets = true,
+    -- This line allows items in a repeat node to update as they are being typed
+    update_events = 'TextChanged,TextChangedI'
+})
 
 -- The configuration below here allows moving across different input fields within a snippet
 -- am using <A-j> for forward and <A-k> for backward (vim down & up)
@@ -99,9 +107,16 @@ vim.keymap.set({ "i", "s" }, "<A-k>", function()
     end
 end, { silent = true })
 
+-- Use the mapping below to cycle through choice nodes
+vim.cmd[[ 
+    " Cycle forward through choice nodes with Control-f (for example)
+    imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
+    smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
+]]
+
 -- The line below lets us use "friendly snippets" from vscode (in documentation for luasnip)
 -- copied from typecraft vids
-require("luasnip.loaders.from_vscode").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load() -- is disabled for now bc is hindering expansion of manual snippets (see if I can make this not autoexpand)
 
 -- The configuration below contains manual snippet expansions
 -- am still learning how it works
@@ -114,21 +129,44 @@ ls.add_snippets("lua", {
         t('print("hello world")')
     })
 })
+
 -- snippets for latex files
 ls.add_snippets("tex", {
     -- Overall:
     -- Sections
-    s({ trig = "sec", -- short for "section"
+    s({ trig = "beg", -- short for "beginning a section"
         snippetType = "autosnippet", -- allows for the snippet to autoexpand
-         -- can only expand the snippet at the beginning of a line
         name = "Create Latex section",
     },{
         t("\\begin{"), i(1), t("}"),
         t({ "", "\t" }), i(0), -- strange that i(0) is used here but i(0) refers to the last input
         t({ "", "\\end{" }), rep(1), t("}"),
+    },{
+        condition = line_begin -- can only expand the snippet at the beginning of a line, uses a local definition from above
+    }),
+    -- Math modes
+    -- mk for inline math (ig bc "make math"? also bc mk is not the start of any english word haha)
+    s({
+        trig = "mk", -- make mk a trigger EXCEPT when it is located in the middle of a word
+        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand
+        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified)
+    },{
+        t("$"), i(1), t("$"), i(0)
+    },{
+    }),
+    -- dm for display math (also bc dm is not the start of any english word haha)
+    s({
+        trig = "dm", -- make mk a trigger EXCEPT when it is located in the middle of a word
+        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand
+        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified)
+    },{
+        t({"\\[", "\t"}), i(1), t({"", "\\]"}), i(0)
+    },{
     }),
 
+
     -- Math:
+    -- configured so that it only expands when am in math mode!
     -- fractions
     s("frac", {
         t("\\frac{"),
