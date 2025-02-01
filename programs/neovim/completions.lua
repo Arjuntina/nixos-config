@@ -70,49 +70,50 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 local line_begin = require("luasnip.extras.expand_conditions").line_begin -- line begin condition
 
-
-
--- The code below allows tab & shift-tab to expand/unexpand snippets?
--- Not sure of the exact specifics - could be something to look into!
-vim.cmd[[
-    " Use Tab to expand and jump through snippets
-    " Two derivations are given below (imap & smap) to allow the keybind to work in insert & select (visual) mode
-    imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
-    smap <silent><expr> <Tab> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<Tab>'
-
-    " Use Shift-Tab to jump backwards through snippets
-    " Two derivations are given below (imap & smap) to allow the keybind to work in insert & select (visual) mode
-    imap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
-    smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '<S-Tab>'
-]]
-
-ls.config.setup({
-    -- This line allows certain snippets to be autoexpandable
-    enable_autosnippets = true,
-    -- This line allows items in a repeat node to update as they are being typed
-    update_events = 'TextChanged,TextChangedI'
-})
-
--- The configuration below here allows moving across different input fields within a snippet
--- am using <A-j> for forward and <A-k> for backward (vim down & up)
-vim.keymap.set({ "i", "s" }, "<A-j>", function()
+-- KEYBINDS
+-- The code below allows tab & shift-tab to move between various input fields of snippets
+-- These commands are just copied - I don't know the specifics of how they work
+vim.keymap.set({ "i", "s" }, "<Tab>", function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
     end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<A-k>", function()
+vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
     if ls.jumpable(-1) then
         ls.jump(-1)
     end
 end, { silent = true })
 
 -- Use the mapping below to cycle through choice nodes
+-- Look into this one too
 vim.cmd[[ 
     " Cycle forward through choice nodes with Control-f (for example)
     imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
     smap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
 ]]
+
+-- more config options (for changing the way snippets behave/appear) here
+ls.config.setup({
+    -- This line allows certain snippets to be autoexpandable
+    enable_autosnippets = true,
+    -- This line allows items in a repeat node to update as they are being typed
+    update_events = 'TextChanged,TextChangedI',
+    store_selection_keys = "<Tab>", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
+})
+
+-- Lua function which returns the contents of selected/stored text in the LS_SELECT_RAW variable and outputs it to the default value of an input node
+-- Allows for highlighting of syntax and inserting brackets around it "after the fact"
+local get_selected = function(args, parent)
+  if (#parent.snippet.env.LS_SELECT_RAW > 0) then
+    return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
+  else  -- If LS_SELECT_RAW is empty, return a blank insert node
+    return sn(nil, i(1))
+  end
+end
+
+
+
 
 -- The line below lets us use "friendly snippets" from vscode (in documentation for luasnip)
 -- copied from typecraft vids
@@ -135,7 +136,7 @@ ls.add_snippets("tex", {
     -- Overall:
     -- Sections
     s({ trig = "beg", -- short for "beginning a section"
-        snippetType = "autosnippet", -- allows for the snippet to autoexpand
+        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand -- lowk am scared of that rn so will wait till am more comfortable
         name = "Create Latex section",
     },{
         t("\\begin{"), i(1), t("}"),
@@ -145,30 +146,27 @@ ls.add_snippets("tex", {
         condition = line_begin -- can only expand the snippet at the beginning of a line, uses a local definition from above
     }),
     -- Math modes
-    -- mk for inline math (ig bc "make math"? also bc mk is not the start of any english word haha)
+    -- mm for math mode 
     s({
-        trig = "mk", -- make mk a trigger EXCEPT when it is located in the middle of a word
-        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand
-        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified)
+        trig = "mm", -- eventually want to use regex to make mm a trigger EXCEPT when it is located in the middle of a word
+        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified) -- could NOT get this to work
     },{
-        t("$"), i(1), t("$"), i(0)
+        t("$"), d(1, get_selected), t("$"), i(0)
     },{
     }),
-    -- dm for display math (also bc dm is not the start of any english word haha)
+    -- dm for display math
     s({
-        trig = "dm", -- make mk a trigger EXCEPT when it is located in the middle of a word
-        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand
-        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified)
+        trig = "dm", -- eventually want to use regex to make dm a trigger EXCEPT when it is located in the middle of a word
+        -- wordTrig = false, regTrig = true -- parameters which basically tell the function to are pay attention to the regex string (which is specified) -- could NOT get this to work
     },{
-        t({"\\[", "\t"}), i(1), t({"", "\\]"}), i(0)
+        t({"\\[", "\t"}), d(1, get_selected), t({"", "\\]"}), i(0)
     },{
     }),
-
 
     -- Math:
-    -- configured so that it only expands when am in math mode!
+    -- to be cfonrigured so that they only expand when am in math mode!
     -- fractions
-    s("frac", {
+    s("fr", {
         t("\\frac{"),
         i(1),
         t("}{"),
@@ -176,9 +174,15 @@ ls.add_snippets("tex", {
         t("}")
     }),
     -- text
-    s("text", {
+    s("tt", {
         t("\\text{"),
-        i(1),
+        d(1, get_selected),
+        t("}")
+    }),
+    -- math letters
+    s("ml", {
+        t("\\mathbb{"),
+        d(1, get_selected),
         t("}")
     }),
 })
