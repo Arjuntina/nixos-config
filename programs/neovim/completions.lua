@@ -133,7 +133,6 @@ ls.add_snippets("lua", {
 
 -- snippets for latex files
 ls.add_snippets("tex", {
-    -- Overall:
     -- Sections
     s({ trig = "beg", -- short for "beginning a section"
         -- snippetType = "autosnippet", -- allows for the snippet to autoexpand -- lowk am scared of that rn so will wait till am more comfortable
@@ -145,6 +144,33 @@ ls.add_snippets("tex", {
     },{
         condition = line_begin -- can only expand the snippet at the beginning of a line, uses a local definition from above
     }),
+
+    -- text formatting
+    s("bb", {
+        t("\\textbf{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    s("it", {
+        t("\\textit{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    s("uu", {
+        t("\\underline{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    s("em", {
+        t("\\emph{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    s("nl", {
+        t("\\vspace{1em}")
+    }),
+
+
     -- Math modes
     -- mm for math mode 
     s({
@@ -163,9 +189,18 @@ ls.add_snippets("tex", {
     },{
     }),
 
-    -- Math:
-    -- to be cfonrigured so that they only expand when am in math mode!
-    -- fractions
+    -- Math symbols:
+    -- big symbol "containers"
+    s("^", {
+        t("^{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    s("_", {
+        t("_{"),
+        d(1, get_selected),
+        t("}")
+    }),
     s("fr", {
         t("\\frac{"),
         i(1),
@@ -173,11 +208,17 @@ ls.add_snippets("tex", {
         i(2),
         t("}")
     }),
-    -- text
-    s("tt", {
-        t("\\text{"),
-        d(1, get_selected),
-        t("}")
+    s("un", {
+        t("\\cup")
+    }),
+    s("in", {
+        t("\\cap")
+    }),
+    s("bun", {
+        t("\\bigcup")
+    }),
+    s("bin", {
+        t("\\bigcap")
     }),
     -- math letters
     s("ml", {
@@ -185,5 +226,44 @@ ls.add_snippets("tex", {
         d(1, get_selected),
         t("}")
     }),
+    s("mc", {
+        t("\\mathcal{"),
+        d(1, get_selected),
+        t("}")
+    }),
+    -- small symbols
+    s("inf", {
+        t("\\infty")
+    }),
+    s("emp", {
+        t("\\varnothing")
+    }),
+    -- greek letters
+    s("al", {
+        t("\\alpha")
+    }),
+    s("be", {
+        t("\\beta")
+    }),
+    s("gam", {
+        t("\\gamma")
+    }),
+    s("eps", {
+        t("\\epsilon")
+    }),
+    s("ta", {
+        t("\\tau")
+    }),
+    s("tau", {
+        t("\\tau")
+    }),
+    -- text
+    s("tt", {
+        t("\\text{"),
+        d(1, get_selected),
+        t("}")
+    }),
+
+
 })
 
