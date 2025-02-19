@@ -264,6 +264,18 @@ ls.add_snippets("tex", {
         t("}")
     }),
 
+    -- Figures! Oh what a headache to implement
+    s({ trig = "fig", -- short for "beginning a section"
+        -- snippetType = "autosnippet", -- allows for the snippet to autoexpand -- lowk am scared of that rn so will wait till am more comfortable
+        name = "Create Latex figure",
+    },{
+        t({ "\\begin{figure}[H]", "\t\\centering", "\t\\def\\svgwidth{0.5\\textwidth}", "\t\\import{./figures/renderedInkscape/}{"}),
+        i(1),
+        t({".pdf_tex}", "\t\\hfill", "\\end{figure}"})
+    },{
+        condition = line_begin -- can only expand the snippet at the beginning of a line, uses a local definition from above
+    }),
+
 
 })
 
