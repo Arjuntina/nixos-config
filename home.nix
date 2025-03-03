@@ -45,8 +45,6 @@
         ]))
         # Java
         jdk8
-        # Jetbrains
-        jetbrains.webstorm
 
         # Desktop stuff
         ## App Launchers (maybe make my own one day?)
