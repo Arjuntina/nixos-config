@@ -25,6 +25,8 @@ lspconfig.pyright.setup{            -- for python
 }
 lspconfig.nil_ls.setup{            -- for nix
 }
+lspconfig.jdtls.setup{             -- for Java
+}
 
 vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, {desc = "hover"})
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {desc = "go to definition"})

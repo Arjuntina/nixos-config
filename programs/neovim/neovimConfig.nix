@@ -172,6 +172,7 @@
 				lua-language-server #Lua
 				pyright #Python
 				clang-tools #C
+                jdt-language-server #Java
 			];
 		};
 	};
