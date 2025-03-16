@@ -108,7 +108,7 @@ ls.config.setup({
     -- This line allows items in a repeat node to update as they are being typed
     update_events = 'TextChanged,TextChangedI',
     -- store_selection_keys = what to use for "cut and paste" snippets
-    store_selection_keys = "", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
+    store_selection_keys = "<Tab>", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
 })
 
 -- Lua function which returns the contents of selected/stored text in the LS_SELECT_RAW variable and outputs it to the default value of an input node
