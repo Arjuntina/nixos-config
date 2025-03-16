@@ -73,10 +73,15 @@ local line_begin = require("luasnip.extras.expand_conditions").line_begin -- lin
 -- KEYBINDS
 -- The code below allows tab & shift-tab to move between various input fields of snippets
 -- These commands are just copied - I don't know the specifics of how they work
--- TEMPORARY CHANGE: tab doesn't work as expected, so keybind has changed to "," (fix one day)
-vim.keymap.set({ "i", "s" }, ",", function()
+vim.keymap.set({ "i", "s" }, "<Tab>",
+function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
+    else
+        -- The code below allows tab to work normally when no completions are available
+        -- copied from a good reddit post (https://www.reddit.com/r/neovim/comments/zrcrv1/luasnip_tab_as_expandjump_trigger/)
+        -- Explanation: figure out later
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
     end
 end, { silent = true })
 
@@ -103,8 +108,7 @@ ls.config.setup({
     -- This line allows items in a repeat node to update as they are being typed
     update_events = 'TextChanged,TextChangedI',
     -- store_selection_keys = what to use for "cut and paste" snippets
-    -- HAS BEEN CHANGED TO COMMA (switch back and fix one day)
-    store_selection_keys = ",", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
+    store_selection_keys = "", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
 })
 
 -- Lua function which returns the contents of selected/stored text in the LS_SELECT_RAW variable and outputs it to the default value of an input node
