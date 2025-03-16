@@ -14,7 +14,7 @@ g.mapleader = " "
 
 -- Remapping 
 -- map semicolon to colon so that i don't have to press shift (very neat concept I recently learned)
--- cmd("map ; :")
+cmd("map ; :")
 
 -- Tabbing
 -- AY YA YA the documentation is oh so confusing

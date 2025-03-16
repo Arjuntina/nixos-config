@@ -73,7 +73,8 @@ local line_begin = require("luasnip.extras.expand_conditions").line_begin -- lin
 -- KEYBINDS
 -- The code below allows tab & shift-tab to move between various input fields of snippets
 -- These commands are just copied - I don't know the specifics of how they work
-vim.keymap.set({ "i", "s" }, ";", function()
+-- TEMPORARY CHANGE: tab doesn't work as expected, so keybind has changed to "," (fix one day)
+vim.keymap.set({ "i", "s" }, ",", function()
     if ls.expand_or_jumpable() then
         ls.expand_or_jump()
     end
@@ -102,7 +103,8 @@ ls.config.setup({
     -- This line allows items in a repeat node to update as they are being typed
     update_events = 'TextChanged,TextChangedI',
     -- store_selection_keys = what to use for "cut and paste" snippets
-    store_selection_keys = ";", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
+    -- HAS BEEN CHANGED TO COMMA (switch back and fix one day)
+    store_selection_keys = ",", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
 })
 
 -- Lua function which returns the contents of selected/stored text in the LS_SELECT_RAW variable and outputs it to the default value of an input node
