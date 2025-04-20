@@ -96,6 +96,7 @@
                 bsnes
             ];
         })
+        lunar-client
         ## Chess
         scid-vs-pc
     ];
