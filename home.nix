@@ -96,9 +96,13 @@
                 bsnes
             ];
         })
-        lunar-client
+        # lunar-client
         ## Chess
         scid-vs-pc
+
+        ## Classify Later
+        # for gui flatpak
+        gnome-software
     ];
 
 	imports = [

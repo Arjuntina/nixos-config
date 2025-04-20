@@ -11,6 +11,7 @@
 
 		hyprland.url = "github:hyprwm/Hyprland";
 
+        # This was only experimentally used for experimenting with hardware macbook modules - should probably delete soon
 		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
 	};
