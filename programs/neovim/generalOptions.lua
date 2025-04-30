@@ -92,3 +92,4 @@ opt.autoread = true
 -- PROJECT ORGANIZATION
 -- um other keybinds as well? (mass commenting - which needs to vary based on file type)
 -- make sure to save all files once quit?
+-- Fix copy and paste stuff!!! (Have smth like ctrl-shift-c copy to the system clipboard)
