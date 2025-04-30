@@ -18,9 +18,9 @@ cmd("map ; :")
 
 -- Tabbing
 -- AY YA YA the documentation is oh so confusing
--- Here's what I want (For now): just tabs (no tabs & spaces combination), with each tab equal to 3 characters
+-- Here's what I want (For now): just tabs (no tabs & spaces combination), with each tab equal to 4 characters
 -- Tabstop:
--- I don't really get what this setting does, but apparently it basically means that each tab character is equal to 3 spaces/is worth 3 columns in the editor? I actually don't think so and am jst confused now
+-- I don't really get what this setting does, but apparently it basically means that each tab character is equal to 4 spaces/is worth 4 columns in the editor? I actually don't think so and am jst confused now
 cmd("set tabstop=4")
 -- Softtabstop: (Soft tab stop)
 -- TBH i don't fully understand this setting but setting it to 0 disables this feature
@@ -48,7 +48,7 @@ opt.autoindent = true;
 opt.number = true
 -- This allows us to see the relative line numbers of the lines above/below the cursor
 opt.relativenumber = true
--- highlights the line of text the cursor is on -- do I really want this? I can try and see
+-- highlights the line of text the cursor is on
 opt.cursorline = true
 -- stop line wrapping
 cmd("set nowrap")
@@ -62,7 +62,8 @@ configureKey("n", "<leader>wl", "<C-w>l", {desc = "Move window focus right"})
 -- Keybinds to split a window
 configureKey("n", "<leader>wv", "<C-w>v", {desc = "Split a window vertically"})
 configureKey("n", "<leader>ws", "<C-w>s", {desc = "Split a window horizontally"})
--- Keybinds to resize a window
+-- Keybinds to resize a window 
+-- Todo: Maybe use a shift version to make much larger changes to window size?
 configureKey("n", "<leader>w=", "<C-w>+", {desc = "Increase window height"})
 configureKey("n", "<leader>w-", "<C-w>-", {desc = "Decrease window height"})
 configureKey("n", "<leader>w.", "<C-w>>", {desc = "Increase window width"})
@@ -78,10 +79,16 @@ opt.mouse = "nv"
 -- Turned off for now because I don't really need the feature & I'm not too sure how the cache works on linux
 opt.undofile = false
 -- opt.undodir = "/home/arjuntina/.cache"
+configureKey("n", "<leader>wr", "redo", {desc = "Redo command (to undo any undos)"})
 
 -- Other small things (searching, file sourcing)
--- Use smartcase when searching in a document
+-- Use smartcase when searching in a document (smartcase = if the word is all lowercase, the search is not case sensitive, but if the word has a capital, the search becomes case sensitive)
 opt.smartcase = true
 -- automatically load changes in a file if it was changed elsewhere
 opt.autoread = true
 
+-- TO DO:
+-- FUNCTION FOLDING!!!!
+-- PROJECT ORGANIZATION
+-- um other keybinds as well? (mass commenting - which needs to vary based on file type)
+-- make sure to save all files once quit?

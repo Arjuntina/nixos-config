@@ -1,3 +1,6 @@
+-- TO DO: SPLIT INTO SEPARATE FILES!!!!
+-- create commands that enable/disable certain collections of snippets??!? hm hm hm
+
 -- cmp configuration
 -- cmp is the "engine" that allows us to see and expand snippets
 -- Configuration here is based on typecraft vids + github pages 
@@ -86,6 +89,7 @@ function()
 end, { silent = true })
 
 -- Code below does not work
+-- Intended so that you can "jump backwards" in a snippet with S-tab
 -- also I don't necessarily want the keybind to be S-Tab
 -- vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
 --     if ls.jumpable(-1) then
@@ -95,6 +99,7 @@ end, { silent = true })
 
 -- Use the mapping below to cycle through choice nodes
 -- Look into this one too
+-- Then add to keybind
 vim.cmd[[ 
     " Cycle forward through choice nodes with Control-f (for example)
     imap <silent><expr> <C-f> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-f>'
@@ -105,14 +110,14 @@ vim.cmd[[
 ls.config.setup({
     -- This line allows certain snippets to be autoexpandable
     enable_autosnippets = true,
-    -- This line allows items in a repeat node to update as they are being typed
+    -- This line allows items in a repeat node to update as they are being typed (creates cool effect)
     update_events = 'TextChanged,TextChangedI',
-    -- store_selection_keys = what to use for "cut and paste" snippets
+    -- store_selection_keys = what to use for "cut and paste" snippets (think latex math mode snippets)
     store_selection_keys = "<Tab>", -- Not sure if this option should go here or in ls.config.set_config (or if it matters)
 })
 
 -- Lua function which returns the contents of selected/stored text in the LS_SELECT_RAW variable and outputs it to the default value of an input node
--- Allows for highlighting of syntax and inserting brackets around it "after the fact"
+-- Allows for highlighting of syntax and inserting brackets around it "after the fact" (for "cut and paste" snippets)
 local get_selected = function(args, parent)
   if (#parent.snippet.env.LS_SELECT_RAW > 0) then
     return sn(nil, i(1, parent.snippet.env.LS_SELECT_RAW))
@@ -126,10 +131,13 @@ end
 
 -- The line below lets us use "friendly snippets" from vscode (in documentation for luasnip)
 -- copied from typecraft vids
+-- disabled for now bc interferes with the manual snippets I have
+-- Is there a way to prioritize the snippets i have? hm hm hm
 -- require("luasnip.loaders.from_vscode").lazy_load() -- is disabled for now bc is hindering expansion of manual snippets (see if I can make this not autoexpand)
 
 -- The configuration below contains manual snippet expansions
 -- am still learning how it works
+-- TODO: Put in separate files!!!!
 -- snippets for all files (used mainly for testing purposes)
 ls.add_snippets("all", {
 })

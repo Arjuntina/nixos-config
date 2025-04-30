@@ -42,6 +42,8 @@
 			'';
 
 			# Define the plugins to install & use on the system
+            # TODO::: VIM TABS (+ button and all), terminal window (tho that might be tmux)
+
 			plugins = with pkgs.vimPlugins; [
 				# Colorscheme
 				# The config statements here are a bit complex because they interface with the custom colorscheme wrapper
@@ -130,10 +132,17 @@
 
 				# Whichkey
 				# Let a neovim popup window remind me of my <leader> keybinds
+                # See if there is a way to configure this?
 				{
 				    plugin = which-key-nvim;
 				    # config = convertLuaFile ./plugins/whichKey.lua;
 				}
+
+                # Latex autocomplier 
+                {
+                    plugin = vimtex;
+					config = convertLuaFile ./plugins/vimtex.lua;
+                }
 
 				# LSP Stuff
                 # all configuration defined in the ./lsp.lua file
@@ -146,7 +155,7 @@
 				# Lazy-LSP -- a lsp client built for nix in mind, but I could not figure out how to set it up properly
 
 				# Autocompletion
-				# Since there's so many plugins with mixed functionality, all the configuration will be located in ./completions.lua
+				# Since there's so many plugins with mixed functionality, all the configuration will be located in ./completions.lua -- HOPEFULLY SPLIT UP SOON!
 				# Cmp -- main autocompletion engine which displays the completion box and all that jazz
 				nvim-cmp
 				# cmp_luasnip -- provides nvim-cmp with snippet translations from luasnip (below) & friendly snippets (below)
@@ -159,11 +168,6 @@
                 # Configuration for this plugin is actually defined in ./lsp.lua because it has to be loaded into various language servers
 				cmp-nvim-lsp
 
-                # Latex stuff
-                {
-                    plugin = vimtex;
-					config = convertLuaFile ./plugins/vimtex.lua;
-                }
 			];
 
 			# Extra packages? Am using for lsp servers but might change as i don't really understand them rn
