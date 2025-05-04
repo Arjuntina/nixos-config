@@ -58,17 +58,20 @@ configureKey("n", "<leader>kj", "za", {desc = "toggle folds"})
 -- Command for creating folds
 -- the command below runs in visual mode because text needs to be highlighted to get marked for folding
 configureKey("v", "<leader>kk", "zf", {desc = "create folds"})
+-- Command for deleting folds
+configureKey("n", "<leader>kd", "zd", {desc = "delete folds under cursor"})
 
 
 -- Left gutter settings
--- Left gutter includes 3 things - sign column, fold column, line number
+-- Left gutter includes 3 things - sign column, line number, foldcolumn
 --
 -- Overall left gutter formatting:
 -- Uses the newly added "statuscolumn" feature, which allows for a lot of customization!
 -- Explanation:
--- %{v:relnum == 0 and v:lnum or v:relnum} - return the absolute line number for the current line, but relative line numbers for all the other lines
 --  opt.statuscolumn = "%s%C%{v:relnum == 0 and v:lnum or v:relnum}"
-opt.statuscolumn = "%s%C%{v:relnum == 0 and v:lnum or v:relnum} "
+-- %@v:handler.fold@
+-- %{v:display.fold()}
+opt.statuscolumn = "%s%=%{v:relnum == 0 ? v:lnum : v:relnum} "
 -- 
 -- Sign column:
 -- The column which shows LSP suggestions and git changes
@@ -77,15 +80,33 @@ opt.signcolumn = "yes:1"
 --
 -- Fold column:
 -- width set to 2
-opt.foldcolumn = "2"
+opt.foldcolumn = "1"
 --
 -- Line Number:
 -- Enables the option to see absolute line numbers (the actual line number of a line)
 -- Disabled because is handled with the "statuscolumn" setting above!
 opt.number = false
--- Enables the option to see relative line numbers (number of lines above/below the cursor)
--- Disabled because is handled with the "statuscolumn" setting above!
-opt.relativenumber = false
+-- 2 purposes: If not using "statuscolumn" & just using "numbercolumn", this enables the option to see relative line numbers in the number gutter
+-- If using "statuscolumn", this enables fast refresh of the relative numbers
+opt.relativenumber = true
+-- OTHER STUFF (CLEAN UP!!!)
+_G.display = {}
+function _G.display.fold()
+    return "hi"
+    -- local lnum = vim.v.lnum
+    -- local fold_level = vim.fn.foldlevel(lnum)
+
+    -- if fold_level == 0 then
+    --     return " " -- no fold here
+    -- elseif vim.fn.foldclosed(lnum) == -1 then
+    --     return "▾" -- open fold
+    -- else
+    --     return "▸" -- closed fold
+    -- end
+end
+
+
+
 
 -- Window Management
 -- Keybinds to move the cursor between windows
@@ -106,7 +127,7 @@ configureKey("n", "<leader>w,", "<C-w><", {desc = "Decrease window width"})
 configureKey("n", "<leader>wq", "<C-w>q", {desc = "Close an open window"})
 
 -- Mouse usage
--- I want to use the mouse in visual & normal mode
+-- I want to use the mouse in visual & normal mode to select text when I need to
 opt.mouse = "nv"
 
 -- Options for storing the undo history of files into the local cache

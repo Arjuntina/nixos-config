@@ -110,12 +110,6 @@
 		./windowManagers/windowManagers.nix
 	];
 
-	programs.starship = {
-		enable = true;
-		enableZshIntegration = true;
-		settings = builtins.fromTOML (builtins.readFile ./programs/starship/starshipConfig.toml);
-	};
-
 	programs = {
 		zsh = {
 			enable = true;

@@ -11,11 +11,11 @@ $os\
 $username\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
+[](fg:#DA627D bg:#ba7e66)\
 $git_branch\
 $git_status\
 $docker_context\
-[](fg:#FCA17D bg:#75B21B)\
+[](fg:#ba7e66 bg:#75B21B)\
 $c\
 $conda\
 $haskell\
@@ -71,17 +71,17 @@ read_only = " 󰌾"
 
 # Git stuff
 [git_branch]
-symbol = " "
-style = "bg:#FCA17D"
+symbol = ""
+style = "bg:#ba7e66"
 format = '[ $symbol $branch ]($style)'
 [git_commit]
 tag_symbol = '  '
 [git_status]
-style = "bg:#FCA17D"
+style = "bg:#ba7e66"
 format = '[$all_status$ahead_behind ]($style)'
 [docker_context]
 symbol = " "
-style = "bg:#75B21B"
+style = "bg:#ba7e66"
 format = '[ $symbol]($style)'
 
 # Coding languages

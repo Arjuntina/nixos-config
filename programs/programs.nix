@@ -6,6 +6,7 @@
         ./mpv/mpvConfig.nix
 		./neovim/neovimConfig.nix
         ./rofi/rofi.nix
+        ./starship/starship.nix
         ./waybar/waybar.nix
         ./yt-dlp/yt-dlp.nix
         ./zathura/zathura.nix
@@ -31,6 +32,10 @@
 	};
 
     rofi = {
+        enable = true;
+    };
+
+    starship = {
         enable = true;
     };
 
