@@ -78,7 +78,10 @@ format = '[ $symbol $branch ]($style)'
 tag_symbol = '  '
 [git_status]
 style = "bg:#ba7e66"
-format = '[$all_status$ahead_behind ]($style)'
+deleted = '🗑 $count (red)'
+modified = '📝 $count (yellow)'
+staged = '✓  $count (green)'
+format = '[$deleted$modified$staged ]($style)'
 [docker_context]
 symbol = " "
 style = "bg:#ba7e66"
