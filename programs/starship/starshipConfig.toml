@@ -64,10 +64,10 @@ truncation_symbol = "󰇘/"
 read_only = " 󰌾"
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
 
 # Git stuff
 [git_branch]
