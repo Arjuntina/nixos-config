@@ -1,6 +1,6 @@
 -- This is my neovim config built from scratch
 --
--- Sources (as of now): typecraft vids & notusknot livestream
+-- Sources (as of now): typecraft vids & notusknot livestream & many long google searches
 -- Hopefully, I can use this to configure neovim however i want to!
 
 -- Set some variables here to make the rest of the config a bit more readable
@@ -16,6 +16,7 @@ g.mapleader = " "
 -- map semicolon to colon so that i don't have to press shift (very neat concept I recently learned)
 cmd("map ; :")
 
+-- TEXT FORMATTING
 -- Tabbing
 -- AY YA YA the documentation is oh so confusing
 -- Here's what I want (For now): just tabs (no tabs & spaces combination), with each tab equal to 4 characters
@@ -42,16 +43,49 @@ opt.autoindent = true;
 -- Smartindent:
 -- sounds nice, but messes up indents of nix comments :(
 -- opt.smartindent = true;
-
--- Line Settings
--- This allows us to see what absolute line number the cursor is on
-opt.number = true
--- This allows us to see the relative line numbers of the lines above/below the cursor
-opt.relativenumber = true
+-- Line Appearance settings:
 -- highlights the line of text the cursor is on
 opt.cursorline = true
 -- stop line wrapping
 cmd("set nowrap")
+
+-- Text folding!
+-- I will define some custom keybinds here bc I find the default keybindings (with "z") a bit goofy
+-- Treat "<leader>k" as the key precursor for any text folds
+-- (f is already taken for "finding" stuff with telescope)
+-- Toggling folds (i pretty much exclusively use this instead of the separate binds for opening & closing folds)
+configureKey("n", "<leader>kj", "za", {desc = "toggle folds"})
+-- Command for creating folds
+-- the command below runs in visual mode because text needs to be highlighted to get marked for folding
+configureKey("v", "<leader>kk", "zf", {desc = "create folds"})
+
+
+-- Left gutter settings
+-- Left gutter includes 3 things - sign column, fold column, line number
+--
+-- Overall left gutter formatting:
+-- Uses the newly added "statuscolumn" feature, which allows for a lot of customization!
+-- Explanation:
+-- %{v:relnum == 0 and v:lnum or v:relnum} - return the absolute line number for the current line, but relative line numbers for all the other lines
+--  opt.statuscolumn = "%s%C%{v:relnum == 0 and v:lnum or v:relnum}"
+opt.statuscolumn = "%s%C%{v:relnum == 0 and v:lnum or v:relnum} "
+-- 
+-- Sign column:
+-- The column which shows LSP suggestions and git changes
+opt.signcolumn = "yes:1"
+-- Integration of git signs handled by the gitsigns plugin
+--
+-- Fold column:
+-- width set to 2
+opt.foldcolumn = "2"
+--
+-- Line Number:
+-- Enables the option to see absolute line numbers (the actual line number of a line)
+-- Disabled because is handled with the "statuscolumn" setting above!
+opt.number = false
+-- Enables the option to see relative line numbers (number of lines above/below the cursor)
+-- Disabled because is handled with the "statuscolumn" setting above!
+opt.relativenumber = false
 
 -- Window Management
 -- Keybinds to move the cursor between windows
@@ -79,7 +113,7 @@ opt.mouse = "nv"
 -- Turned off for now because I don't really need the feature & I'm not too sure how the cache works on linux
 opt.undofile = false
 -- opt.undodir = "/home/arjuntina/.cache"
-configureKey("n", "<leader>wr", "redo", {desc = "Redo command (to undo any undos)"})
+configureKey("n", "<leader>r", "redo", {desc = "Redo command (to undo any undos)"})
 
 -- Other small things (searching, file sourcing)
 -- Use smartcase when searching in a document (smartcase = if the word is all lowercase, the search is not case sensitive, but if the word has a capital, the search becomes case sensitive)

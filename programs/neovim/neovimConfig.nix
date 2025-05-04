@@ -14,7 +14,6 @@
 		};
 	};
 
-
 	config = lib.mkIf config.neovim.enable {
 		# Neovim config!
 		programs.neovim = 
@@ -101,8 +100,13 @@
 					]));
 					config = convertLuaFile ./plugins/treesitter.lua;
 				}
+                # Gitsigns (for seeing git changes in the left hand column)
+                {
+                    plugin = gitsigns-nvim;
+                    config = convertLuaFile ./plugins/gitsigns.lua;
+                }
 
-				# Neotree
+				# Neotree (file explorer)
 				{
 					plugin = neo-tree-nvim;
 					config = convertLuaFile ./plugins/neotree.lua;
@@ -112,7 +116,7 @@
 					plugin = nvim-web-devicons;
 					config = convertLuaFile ./plugins/devicons.lua;
 				}
-				# Plenary
+				# Plenary (figure out what it does)
 				{
 					plugin = plenary-nvim;
 					config = convertLuaFile ./plugins/plenary.lua;
