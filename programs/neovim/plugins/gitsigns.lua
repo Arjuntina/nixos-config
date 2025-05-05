@@ -1,19 +1,19 @@
 -- Todo: Add some keybinds + other goodies so that you can see changes made to code chunks, who modified the code, quickly stage, and more!
-
 -- most of the stuff below are default settings - stuff I modify will have an additional comment
 
 require('gitsigns').setup {
     -- not sure why the colors of sings aren't showing in the editor but they work quite nicely in practice
     signs = {
-        add          = { text = '┃' },
-        change       = { text = '┃' },
-        delete       = { text = '_' },
+        add          = { text = '┃'},
+        change       = { text = '┃'},
+        delete       = { text = '_'},
         -- topdelete = code deleted at the top of a file
-        topdelete    = { text = '‾' },
+        topdelete    = { text = '‾'},
         -- changedelete = code that was modified and then deleted
-        changedelete = { text = '~' },
-        untracked    = { text = '┆' },
+        changedelete = { text = '~'},
+        untracked    = { text = '┆'},
     },
+
     -- again am not sure why the sign colors aren't showing
     -- description of the colors: more translucent versions of the big signs shown above
     -- I like it! :D

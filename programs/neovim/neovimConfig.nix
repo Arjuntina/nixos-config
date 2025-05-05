@@ -36,6 +36,7 @@
 			# Read in from the options.lua file so that this configuration file doesn't get too crowded
 			extraLuaConfig = ''
 				${builtins.readFile ./generalOptions.lua}
+				${builtins.readFile ./leftGutterStatusColumn.lua}
 				${builtins.readFile ./lsp.lua}
 				${builtins.readFile ./completions.lua}
 			'';
