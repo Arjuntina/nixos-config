@@ -7,6 +7,7 @@
 		./neovim/neovimConfig.nix
         ./rofi/rofi.nix
         ./starship/starship.nix
+        ./tmux/tmux.nix
         ./waybar/waybar.nix
         ./yt-dlp/yt-dlp.nix
         ./zathura/zathura.nix
@@ -36,6 +37,10 @@
     };
 
     starship = {
+        enable = true;
+    };
+
+    tmux = {
         enable = true;
     };
 

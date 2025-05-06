@@ -182,6 +182,7 @@
 			# Packages here have since been moved to home manager
 			shell = pkgs.zsh;
 		};
+
 		# More program configuration? hm hm hm
 		programs.steam.enable = true;
 		programs.steam.gamescopeSession.enable = true;

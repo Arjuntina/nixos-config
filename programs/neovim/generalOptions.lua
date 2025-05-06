@@ -61,6 +61,9 @@ configureKey("v", "<leader>kk", "zf", {desc = "create folds"})
 -- Command for deleting folds
 configureKey("n", "<leader>kd", "zd", {desc = "delete folds under cursor"})
 
+-- Commenting
+
+
 -- Window Management
 -- Keybinds to move the cursor between windows
 configureKey("n", "<leader>wh", "<C-w>h", {desc = "Move window focus left"})
@@ -88,6 +91,10 @@ opt.mouse = "nv"
 opt.undofile = false
 -- opt.undodir = "/home/arjuntina/.cache"
 configureKey("n", "<leader>r", "redo", {desc = "Redo command (to undo any undos)"})
+
+-- Copying and pasting
+-- Want "Y" to copy smth to the system clipboard
+-- am using Y because, in regular vim, Y does the same thing as yy and I am already used to using yy instead of Y 
 
 -- Other small things (searching, file sourcing)
 -- Use smartcase when searching in a document (smartcase = if the word is all lowercase, the search is not case sensitive, but if the word has a capital, the search becomes case sensitive)
