@@ -15,7 +15,7 @@
 
             enable = true;
 
-            extraConfig = builtins.readfile ./hyprlock.conf;
+            extraConfig = builtins.readFile ./hyprlock.conf;
 
         };
 	};

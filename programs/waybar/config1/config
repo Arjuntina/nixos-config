@@ -17,7 +17,8 @@
         "battery",
         "clock",
         "clock#simpleclock",
-        "tray"
+        "tray",
+        "custom/power"
     ],
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -73,5 +74,10 @@
     "tray": {
         "show-passive-items": true,
         "spacing": 10
+    },
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "hyprlock",
+        "format": "⏻"
     }
 }

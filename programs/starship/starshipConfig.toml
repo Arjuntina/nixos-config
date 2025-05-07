@@ -28,8 +28,10 @@ $rlang\
 $rust\
 [](fg:#75B21B bg:#33658A)\
 $time\
-[ ](fg:#33658A)\ 
+[ ](fg:#33658A)
+$character
 """
+#  [ ](fg:#33658A)\ 
 
 [os]
 style = "bg:#9A348E"
@@ -232,3 +234,7 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[  $time ]($style)'
+
+[character]
+success_symbol = "[ 󱞩](bold green)"
+error_symbol = "[ 󱞩](bold red)"
