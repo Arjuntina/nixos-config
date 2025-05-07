@@ -3,17 +3,17 @@
 {
 	# Some options to alter/toggle the config with nix declaration
 	options = {
-		alacritty.enable = lib.mkEnableOption "enables alacritty";
+		wofi.enable = lib.mkEnableOption "enables wofi";
 	};
 
+	config = lib.mkIf config.wofi.enable {
 
-	config = lib.mkIf config.alacritty.enable {
-		# Alacritty config!
-		programs.alacritty = {
-			
+		# Wofi config!
+		programs.wofi = {
+
 			enable = true;
 
-			settings = builtins.fromTOML (builtins.readFile ./alacrittyConfig.toml);
+            style = builtins.readFile ./style.css;
 
 		};
 	};
