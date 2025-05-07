@@ -237,4 +237,4 @@ format = '[  $time ]($style)'
 
 [character]
 success_symbol = "[ 󱞩](bold green)"
-error_symbol = "[ 󱞩](bold red)"
+error_symbol = "[ 󱞩](bold green)" # I don't like the separate symbol after error messages and don't know why it is a default option to have them
