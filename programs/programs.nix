@@ -2,14 +2,15 @@
 
 {
 	imports = [
-		./alacritty/alacrittyConfig.nix
-        ./hyprlock/hyprlockConfig.nix
-        ./mpv/mpvConfig.nix
-		./neovim/neovimConfig.nix
+		./alacritty/alacritty.nix
+        ./hyprlock/hyprlock.nix
+        ./mpv/mpv.nix
+		./neovim/neovim.nix
         ./rofi/rofi.nix
         ./starship/starship.nix
         ./tmux/tmux.nix
         ./waybar/waybar.nix
+        ./wofi/wofi.nix
         ./yt-dlp/yt-dlp.nix
         ./zathura/zathura.nix
 	];
@@ -34,7 +35,7 @@
 	};
 
     rofi = {
-        enable = true;
+        enable = false;
     };
 
     starship = {
