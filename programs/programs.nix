@@ -46,6 +46,10 @@
         enable = true;
     };
 
+    wofi = {
+        enable = true;
+    };
+
     yt-dlp = {
         enable = true;
     };
