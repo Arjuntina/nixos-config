@@ -69,6 +69,7 @@
         gimp
         blender
         imagej
+        krita
         ## Video
         vlc
         kdePackages.kdenlive
