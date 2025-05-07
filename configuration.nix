@@ -135,12 +135,11 @@
 
 		# Enable display/login manager
 		# services.displayManager.sddm.enable = true;
-		# Is this one too?
-		# programs.hyprlock.enable = true;
-		# security.pam.services.hyprlock = true;
 		services.displayManager.ly = {
 			enable = true;
 		};
+        # Differeny lock screens
+		programs.hyprlock.enable = true;
 
 		# Desktop environment
 		# services.xserver.desktopManager.gnome.enable = true;
@@ -153,11 +152,11 @@
 		# X-org window managers
 		services.xserver.windowManager = {
 			# Qtile
-			qtile.enable = true;
+			qtile.enable = false;
 			# DWM
-			dwm.enable = true;
+			dwm.enable = false;
 			# I3
-			i3.enable = true;
+			i3.enable = false;
 			i3.configFile = ./windowManagers/i3/config;
 		};
 		# HYPRLAND

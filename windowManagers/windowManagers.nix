@@ -8,7 +8,8 @@
 	];
 
 	# Enable/disable window managers through high level configuration options here
-	config.i3.enable = true;
+	config.i3.enable = false;
+    config.sway.enable = false;
     config.hyprland.enable = true;
 
 

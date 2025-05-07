@@ -9,6 +9,7 @@
 
 	config = lib.mkIf config.hyprland.enable {
         wayland.windowManager.hyprland = {
+            # Set to true but is also set to true in configuration.nix! -- Look into what should be done! (Does this install it again?)
             enable = true;
             
             extraConfig = builtins.readFile ./hyprland.conf;
