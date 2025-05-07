@@ -90,7 +90,7 @@ opt.mouse = "nv"
 -- Turned off for now because I don't really need the feature & I'm not too sure how the cache works on linux
 opt.undofile = false
 -- opt.undodir = "/home/arjuntina/.cache"
-configureKey("n", "<leader>r", "redo", {desc = "Redo command (to undo any undos)"})
+configureKey("n", "<leader>r", "redo", {desc = "Redo"})
 
 -- Copying and pasting
 -- Want "Y" to copy smth to the system clipboard

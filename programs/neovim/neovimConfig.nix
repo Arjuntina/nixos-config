@@ -24,6 +24,7 @@
 				convertLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";	
 			
 			in {
+
 			# Install neovim to the system & make it the default editor
 			enable = true;
 			defaultEditor = true;
@@ -106,6 +107,16 @@
                     plugin = gitsigns-nvim;
                     config = convertLuaFile ./plugins/gitsigns.lua;
                 }
+				# indent-blankline-nvim - shows a small transparent line wherever I indent in a file
+				{
+					plugin = indent-blankline-nvim;
+					config = convertLuaFile ./plugins/indentBlankline.lua;
+				}
+                # Comments - for making comments
+                {
+                    plugin = comment-nvim;
+                    config = convertLuaFile ./plugins/comment.lua;
+                }
 
 				# Neotree (file explorer)
 				{
@@ -129,18 +140,11 @@
 					config = convertLuaFile ./plugins/lualine.lua;
 				}
 
-				# indent-blankline-nvim - shows a small transparent line wherever I indent in a file
-				{
-					plugin = indent-blankline-nvim;
-					config = convertLuaFile ./plugins/indentBlankline.lua;
-				}
-
 				# Whichkey
 				# Let a neovim popup window remind me of my <leader> keybinds
-                # See if there is a way to configure this?
 				{
 				    plugin = which-key-nvim;
-				    # config = convertLuaFile ./plugins/whichKey.lua;
+				    config = convertLuaFile ./plugins/whichKey.lua;
 				}
 
                 # Latex autocomplier 

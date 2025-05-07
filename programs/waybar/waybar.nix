@@ -2,12 +2,13 @@
 
 {
 	# Some options to alter/toggle the config with nix declaration
-	options = {
-		waybar.enable = lib.mkEnableOption "enables waybar";
-	};
+    # NOT USING THIS TOGGLE because I would rather link this toggle to the hyprland toggle!
+	# options = {
+	# 	waybar.enable = lib.mkEnableOption "enables waybar";
+	# };
 
-
-	config = lib.mkIf config.waybar.enable {
+    # Only enable this module when hyprland is enabled
+	config = lib.mkIf config.hyprland.enable {
 
         # waybar config!
         programs.waybar = {

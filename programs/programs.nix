@@ -44,10 +44,6 @@
         enable = true;
     };
 
-    waybar = {
-        enable = true;
-    };
-
     yt-dlp = {
         enable = true;
     };
