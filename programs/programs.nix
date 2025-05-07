@@ -3,6 +3,7 @@
 {
 	imports = [
 		./alacritty/alacrittyConfig.nix
+        ./hyprlock/hyprlockConfig.nix
         ./mpv/mpvConfig.nix
 		./neovim/neovimConfig.nix
         ./rofi/rofi.nix
