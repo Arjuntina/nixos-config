@@ -7,16 +7,14 @@
     "gtk-layer-shell": true,
     "passthrough": false,
     "fixed-center": true,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
-    "modules-center": [],
+    "modules-left": ["clock#simpleclock", "clock"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "cpu",
         "memory",
         "pulseaudio",
         "backlight",
         "battery",
-        "clock",
-        "clock#simpleclock",
         "tray",
         "custom/power"
     ],
@@ -33,9 +31,6 @@
             "4" : [],
             "5" : []
         }
-    },
-    "hyprland/window": {
-        "format": "{class}"
     },
     "cpu": {
         "format": " {usage}%",
