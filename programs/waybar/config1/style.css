@@ -104,11 +104,12 @@ window#waybar.empty #window {
     color: #89b4fa;
 }
 
-#custom-power {
+/* #custom-power {
     color: #f38ba8;
     font-size: 13px;
-}
-#custom-power:hover {
+} */
+
+#custom-power {
     background-color: #f38ba8;
     color: #1e1e2e;
 }
