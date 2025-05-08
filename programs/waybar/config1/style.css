@@ -94,7 +94,11 @@ window#waybar.empty #window {
 }
 
 #pulseaudio {
-    color: #cba6f7;
+    color: #b4befe;
+}
+
+#pulseaudio.muted {
+    color: #a6adc8;
 }
 
 #custom-logo {
