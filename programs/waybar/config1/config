@@ -11,6 +11,7 @@
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "cpu",
+        "memory",
         "pulseaudio",
         "backlight",
         "battery",
@@ -35,6 +36,9 @@
         "format": " {usage}%",
         "tooltip": true,
         "interval": 1
+    },
+    "memory": {
+        "format": " {used:0.1f}Gi"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

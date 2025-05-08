@@ -51,16 +51,17 @@ window#waybar {
 #custom-power,
 #cpu,
 #tray,
+#memory,
 #window, 
 #battery,
 #backlight{
     min-height: 0;
     min-width: 0;
-    padding: 0.1em 0.6em;
-    border-radius: 2px 4px;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
     margin: 3px 2px;
-    /* background-color: #1e1e2e; */
-    background-color: #2b2b49;
+    /* background-color: #181825; */
+    background-color: #1e1e2e;
 }
 
 #custom-sep {
@@ -102,11 +103,6 @@ window#waybar.empty #window {
 
 #custom-power {
     color: #f38ba8;
-    font-size: 14px;
-}
-#custom-power:hover {
-    background-color: #f38ba8;
-    color: #1e1e2e;
     font-size: 14px;
 }
 
