@@ -22,13 +22,23 @@
 		# Enable CUPS to print documents.
 		# services.printing.enable = true;
 
-		# Enable sound.
+		# Modifying the sound servers.
+        # Necessary background info:
+        # Pulseaudio & Pipewire are intermediary programs between apps (eg. firefox) and ALSA - Advanced Linux Sound Architecture, which talks directly to sound cards
+        # Is necessary because ALSA is a very low level program and does not support mixing or multi-app support
+        # PulseAudio was the old default, also JACK? (which worked alongside pulseaudio i think? but idk)
+        # Pipewire is the new default for modern systems
+        # Most modern desktop environments now use Pipewire
+        # For compatibility reasons, pipewire can emulate a pulseaudio server (which is shown below with the pulse.enable option)
+        # Sound options:
 		# hardware.pulseaudio.enable = true;
 		# OR
 		services.pipewire = {
 		    enable = true;
 			pulse.enable = true;
 		};
+        # For lower level control of sound, see ALSA (I think that's just something end users don't really touch)
+        # For higher level control of sound, can use gui programs like pavucontrol
 
 		# Enable touchpad support (enabled default in most desktopManager).
 		services.libinput.enable = true;
