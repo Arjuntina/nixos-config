@@ -15,4 +15,4 @@ set selection-clipboard clipboard
 # Other options: command line (c) & horizontal scrollbar (h)
 set guioptions "sv"
 
-set font "FiraCode Nerd Font Mono 12"
+set font "Iosevka Nerd Font Mono 12"

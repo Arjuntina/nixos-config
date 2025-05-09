@@ -52,8 +52,8 @@
 @define-color	crust-rgb  rgb(17, 17, 27);
 
 * {
-  font-family: 'Iosevka Nerd Font', monospace;
-  font-size: 18px;
+  font-family: "FiraCode Nerd Font Propo", monospace;
+  font-size: 16px;
 }
 
 /* Window */
@@ -102,6 +102,10 @@ window {
 #input image {
     border: none;
     color: @red;
+    min-width: 16px;
+    min-height: 16px;
+    max-width: 16px;
+    max-height: 16px;
 }
 
 #input * {

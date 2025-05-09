@@ -223,7 +223,6 @@
 
 		fonts.packages = with pkgs; [
 			font-awesome                    # for fun icons!
-			fira
 			(nerdfonts.override { 
 				fonts = [ "FiraCode" "Iosevka" "ZedMono"]; 
 			})
