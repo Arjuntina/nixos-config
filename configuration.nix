@@ -222,10 +222,10 @@
 		users.defaultUserShell = pkgs.zsh;
 
 		fonts.packages = with pkgs; [
-			font-awesome
+			font-awesome                    # for fun icons!
 			fira
 			(nerdfonts.override { 
-				fonts = [ "FiraCode" "CodeNewRoman" "Iosevka"]; 
+				fonts = [ "FiraCode" "Iosevka" "ZedMono"]; 
 			})
 		];
 

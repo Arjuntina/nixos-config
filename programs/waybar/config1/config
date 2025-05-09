@@ -1,7 +1,6 @@
 {
     "layer": "bottom",
     "position": "top",
-    "height": 33,
     "spacing": 2,
     "exclusive": true,
     "gtk-layer-shell": true,
@@ -17,6 +16,14 @@
         "tray",
         "custom/power"
     ],
+    "clock": {
+        "format": "<span font='Font Awesome 6 Free Solid 9'></span> {:L%a %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock#simpleclock": {
+        "tooltip": false,
+        "format": "<span font='Font Awesome 6 Free Solid 9'></span> {:%H:%M}"
+    },
     "hyprland/workspaces": {
         "on-click": "activate",
         "format": "{id}",
@@ -38,11 +45,16 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-icons": ["", "", ""]
+        "format-icons": ["<span font='Font Awesome 6 Free Solid 9'></span>",
+                         "<span font='Font Awesome 6 Free Solid 9'></span>",
+                         "<span font='Font Awesome 6 Free Solid 9'></span>"],
+        "format-muted": "<span font='Font Awesome 6 Free Solid 9'></span>",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": [""]
+        "format-icons": ["<span font='Font Awesome 6 Free Solid 9'></span>"]
     },
     "battery" : {
         "interval": 60,
@@ -50,17 +62,12 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-icons":  ["", "", "", "", ""],
-        "max-length": 25
-    },
-    "clock": {
-        "format": " {:L%a %d %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "clock#simpleclock": {
-        "tooltip": false,
-        "format": " {:%H:%M}"
+        "format": "{icon} {capacity}%",
+        "format-icons":  ["<span font='Font Awesome 6 Free Solid 9'></span>",
+                          "<span font='Font Awesome 6 Free Solid 9'></span>",
+                          "<span font='Font Awesome 6 Free Solid 9'></span>",
+                          "<span font='Font Awesome 6 Free Solid 9'></span>",
+                          "<span font='Font Awesome 6 Free Solid 9'></span>"]
     },
     "tray": {
         "show-passive-items": true,

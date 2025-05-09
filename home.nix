@@ -67,7 +67,8 @@
         blender
         imagej
         krita
-        ## Video
+        ## Audio/Video
+        pavucontrol
         vlc
         kdePackages.kdenlive
         ## Coding
@@ -85,7 +86,6 @@
         dosbox-staging
         ## Utility
         flameshot
-        nemo
         qbittorrent
         ## Gaming
         (retroarch.override {
