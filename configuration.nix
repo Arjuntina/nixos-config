@@ -19,6 +19,10 @@
 		# HARDWARE STUFF
 		# Ofc not real hardware (that is in hardware-configuration) but this is for the input devices configuration information
 
+        # To enable all firmware? idk
+        # It's part of my attempt to get network working on mac
+        hardware.enableAllFirmware = true;
+
 		# Enable CUPS to print documents.
 		# services.printing.enable = true;
 
