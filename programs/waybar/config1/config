@@ -9,7 +9,7 @@
     "modules-left": ["clock#simpleclock", "clock"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
-        "cpu",
+        "network",
         "pulseaudio",
         "backlight",
         "battery",
@@ -38,10 +38,8 @@
             "5" : []
         }
     },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": true,
-        "interval": 1
+    "network": {
+        
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

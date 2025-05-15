@@ -5,7 +5,7 @@
     home.homeDirectory = "/home/arjuntina";
     programs.home-manager.enable = true;
 
-	home.packages = with pkgs;
+    home.packages = with pkgs;
     let
         RStudio-with-my-packages = rstudioWrapper.override{
             packages = with rPackages; [
@@ -16,16 +16,16 @@
     in [
         # CLI programs
         htop
-	    fastfetch
+        fastfetch
 
         # CLI Utilities
-	    starship
+        starship
         gnumake
         gcc
         killall
         tree      # For vieweing directory trees
-	    ripgrep   # For nvim telescope
-	    gdb
+        ripgrep   # For nvim telescope
+        gdb
         file      # delete later
         # For yt-dlp
         ffmpeg_7
@@ -89,9 +89,9 @@
         qbittorrent
         ## Gaming
         (retroarch.override {
-            cores = with libretro; [
-                mesen
-                bsnes
+             cores = with libretro; [
+                 mesen
+                 bsnes
             ];
         })
         # lunar-client
@@ -103,6 +103,7 @@
         gnome-software
     ];
 
+    # Importing configurations of other programs
 	imports = [
 		./programs/programs.nix
 		./windowManagers/windowManagers.nix
@@ -137,7 +138,14 @@
 		};
 	};
 
+    # Writing script files from ./scripts to ~/.config/scripts
+    home.file.".config/scripts" = {
+        source = ./scripts;
+        recursive = true;
+    };
 
 
- 	home.stateVersion = "23.11";
+    # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced
+    # Should not have to necessarily touch it but can periodically update it to ensure configuration syntax is "up to date"
+    home.stateVersion = "23.11";
 }

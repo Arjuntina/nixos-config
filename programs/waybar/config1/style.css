@@ -46,7 +46,7 @@ window#waybar {
 #pulseaudio,
 #custom-logo,
 #custom-power,
-#cpu,
+#network,
 #tray,
 #window, 
 #battery,
@@ -69,7 +69,7 @@ window#waybar.empty #window {
     background-color: transparent;
 }
 
-#cpu {
+#network {
     color: #94e2d5;
 }
 
@@ -100,11 +100,6 @@ window#waybar.empty #window {
 #custom-logo {
     color: #89b4fa;
 }
-
-/* #custom-power {
-    color: #f38ba8;
-    font-size: 13px;
-} */
 
 #battery {
     color: #fad4bb;

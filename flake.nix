@@ -6,13 +6,12 @@
 
 		home-manager = {
 			url = "github:nix-community/home-manager?ref=release-24.11";
-			inputs.nixpkgs.follows = "nixpkgs";                             # ensures that home-manager uses the same nixpkgs source as nixpkgs so that no duplication occurs -- may slightly break home manager but shouldn't really 
-		};
+
+            # ensures that home-manager uses the same nixpkgs source as nixpkgs so that no duplication occurs -- may slightly break home manager but shouldn't really 
+			inputs.nixpkgs.follows = "nixpkgs"; 
+        };
 
 		hyprland.url = "github:hyprwm/Hyprland";
-
-        # This was only experimentally used for experimenting with hardware macbook modules - should probably delete soon
-		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
 	};
 
@@ -24,12 +23,16 @@
 				./configuration.nix
 
 				home-manager.nixosModules.home-manager  {
+                    # Whether to use the nix-pkgs options specified in the configuration.nix OR to use a private pkgs instance specified by home manager
+                    # Want it to be true bc unites the whole system & prevents an extra evaluation of Nixpkgs 
+                    # Also this configuration is not for multiple users - it should just be for me
 					home-manager.useGlobalPkgs = true;
+                    # Install packages to /etc/profiles instead of $HOME/.nix-profile
+                    # Not sure what that really does (good or bad thing?)
+                    # Most people have it enabled though so will do so explicitly here
 					home-manager.useUserPackages = true;
 					home-manager.users.arjuntina = import ./home.nix;
 				}
-
-				# nixos-hardware.nixosModules.apple-macbook-pro-11-5 # not even fully correct but maybe hopefully good enough?
 
 			];
 		};
