@@ -138,10 +138,11 @@
 		};
 	};
 
-    # Writing script files from ./scripts to ~/.config/scripts
-    home.file.".config/scripts" = {
+    # Writing script files from ./scripts to ~/.local/bin/customScripts
+    home.file.".local/bin/customScripts/" = {
         source = ./scripts;
         recursive = true;
+        executable = true;
     };
 
 
