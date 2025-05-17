@@ -12,5 +12,6 @@ BAR=$(printf '█%.0s' $(seq 1 $BAR_LENGTH))
 EMPTY=$(printf '░%.0s' $(seq 1 $((20 - BAR_LENGTH))))
 
 # Send notification via swaync
-notify-send "Brightness: ${BRIGHTNESS}%" "$BAR$EMPTY"
+notify-send -a "brightness" -h string:x-canonical-private-synchronous:brightness \
+    "Brightness: ${BRIGHTNESS}%" "$BAR$EMPTY"
 
