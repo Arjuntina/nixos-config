@@ -125,6 +125,7 @@
                 # OTHER PROGRAM ALIASES
                 # for launching vim (neovim)
                 alias v='vim'
+                # for using yt-dlp (tho need to figure out more and maybe set some params bc I don't use this at all)
                 alias y='yt-dlp'
             '';
 
@@ -138,13 +139,18 @@
 		};
 	};
 
-    # Writing script files from ./scripts to ~/.local/bin/customScripts
-    home.file.".local/bin/customScripts/" = {
-        source = ./scripts;
-        recursive = true;
+   # Writing script files from ./scripts to ~/.local/bin/customScripts
+   # Must be done individually because, although "recursive = true" would copy the files, the "executable = true" flag does not apply recursively through a directory
+   # (maybe this will be fixed in future update? I hope I hope)
+   # To-do: Move to scripts.nix file
+    home.file.".local/bin/customScripts/brightnessUp.sh" = {
+        source = ./scripts/brightnessUp.sh;
         executable = true;
     };
-
+    home.file.".local/bin/customScripts/brightnessDown.sh" = {
+        source = ./scripts/brightnessDown.sh;
+        executable = true;
+    };
 
     # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced
     # Should not have to necessarily touch it but can periodically update it to ensure configuration syntax is "up to date"
