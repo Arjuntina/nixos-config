@@ -143,12 +143,25 @@
    # Must be done individually because, although "recursive = true" would copy the files, the "executable = true" flag does not apply recursively through a directory
    # (maybe this will be fixed in future update? I hope I hope)
    # To-do: Move to scripts.nix file
+   # Brightness Scripts
+    home.file.".local/bin/customScripts/showBrightness.sh" = {
+        source = ./scripts/showBrightness.sh;
+        executable = true;
+    };
     home.file.".local/bin/customScripts/brightnessUp.sh" = {
         source = ./scripts/brightnessUp.sh;
         executable = true;
     };
+    home.file.".local/bin/customScripts/brightnessSlightUp.sh" = {
+        source = ./scripts/brightnessSlightUp.sh;
+        executable = true;
+    };
     home.file.".local/bin/customScripts/brightnessDown.sh" = {
         source = ./scripts/brightnessDown.sh;
+        executable = true;
+    };
+    home.file.".local/bin/customScripts/brightnessSlightDown.sh" = {
+        source = ./scripts/brightnessSlightDown.sh;
         executable = true;
     };
 

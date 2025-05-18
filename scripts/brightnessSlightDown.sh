@@ -1,8 +1,7 @@
 #! /usr/bin/env bash
 
-# Increase brightness with the light utility
-light -A 5
+# Decrease brightness slightly with the light utility
+light -U 1
 
 # Show brightness via swaync
 ~/.local/bin/customScripts/showBrightness.sh
-
