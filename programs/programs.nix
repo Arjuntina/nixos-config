@@ -3,6 +3,7 @@
 {
 	imports = [
 		./alacritty/alacritty.nix
+        ./anki/anki.nix
         ./hyprlock/hyprlock.nix
         ./mpv/mpv.nix
 		./neovim/neovim.nix
@@ -21,6 +22,10 @@
 	alacritty = {
 		enable = true;
 	};
+
+    anki = {
+        enable = true;
+    };
 
     mpv = {
         enable = true;

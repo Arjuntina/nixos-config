@@ -75,8 +75,6 @@
         RStudio-with-my-packages
         vscodium
         android-studio
-        ## Learning
-        anki-bin
         ## Sciency
         stellarium
         ## Virtual Machine
@@ -138,6 +136,16 @@
 			};
 		};
 	};
+    
+    # Some session variables to set at login to make X11 apps scale better? Idk copied from ChatGPT and need to look into more thoroughly
+    home.sessionVariables = {
+        XWAYLAND_SCALE = "1";
+        GDK_SCALE = "1";
+        GDK_DPI_SCALE = "1";
+        QT_SCALE_FACTOR = "1";
+        QT_AUTO_SCREEN_SCALE_FACTOR = "0";
+        XCURSOR_SIZE = "24"; # Adjust depending on DPI
+    };
 
    # Writing script files from ./scripts to ~/.local/bin/customScripts
    # Must be done individually because, although "recursive = true" would copy the files, the "executable = true" flag does not apply recursively through a directory
