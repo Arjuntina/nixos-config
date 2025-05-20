@@ -247,7 +247,7 @@
             persistent = true;                          # Runs garbage collect on boot if computer was asleep
             dates = "weekly";                           # Runs the garbage collection every week
             options = "--delete-older-than 14d -d";     # Deletes generations older than 14d, then garbage collects those generations
-        }
+        };
 
 
 
