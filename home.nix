@@ -88,12 +88,12 @@
         flameshot
         qbittorrent
         ## Gaming
-        (retroarch.override {
-             cores = with libretro; [
-                 mesen
-                 bsnes
-            ];
-        })
+        (retroarch.withCores
+            (cores: with cores; [
+                mesen
+                bsnes
+            ])
+        )
         # lunar-client
         ## Chess
         scid-vs-pc
@@ -114,7 +114,7 @@
 			enable = true;
 
             # Extra Configuration
-            initExtra = ''
+            initContent = ''
                 # ALIAS commands:
                 # NIX ALIASES
                 # for nixos-rebuild switch

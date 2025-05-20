@@ -227,9 +227,9 @@
 
 		fonts.packages = with pkgs; [
 			font-awesome                    # for fun icons!
-			(nerdfonts.override { 
-				fonts = [ "FiraCode" "Iosevka" "ZedMono"]; 
-			})
+            nerd-fonts.fira-code
+            nerd-fonts.iosevka
+            nerd-fonts.zed-mono
 		];
 
         services.flatpak.enable = true;
