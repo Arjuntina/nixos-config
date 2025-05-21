@@ -20,13 +20,10 @@
 
         # CLI Utilities
         starship
-        gnumake
-        gcc
         killall
         tree      # For vieweing directory trees
         ripgrep   # For nvim telescope
-        gdb
-        file      # delete later
+        # file      # for guessing what file type a particular document is
         # For yt-dlp
         ffmpeg_7
 
@@ -34,8 +31,7 @@
         ## Latex
         texliveFull
         texlab
-        ## Other (idk what this is)
-        pandoc
+        pandoc # (for converting documents between diff types - eg. inserting latex into markdown)
 
         # Programming
         # Python
@@ -44,7 +40,7 @@
             # Unless there happens to be a really "universal" package
         ]))
         # Java
-        jdk8
+        # jdk8
 
         # Desktop stuff
         ## Notifications
@@ -56,7 +52,7 @@
         firefox
         qutebrowser
         ## Communication
-        thunderbird
+        # thunderbird
         discord
         zoom-us
         ## Documents
@@ -70,21 +66,21 @@
         ## Audio/Video
         pavucontrol
         vlc
-        kdePackages.kdenlive
+        # kdePackages.kdenlive
         ## Coding
-        RStudio-with-my-packages
+        # RStudio-with-my-packages
         vscodium
-        android-studio
+        # android-studio
         ## Sciency
-        stellarium
+        # stellarium
         ## Virtual Machine
-        virtualbox
-        wineWowPackages.waylandFull
-        winetricks
-        dosbox-staging
+        # virtualbox
+        # wineWowPackages.waylandFull
+        # winetricks
+        # dosbox-staging
         ## Utility
-        flameshot
-        qbittorrent
+        # flameshot
+        # qbittorrent
         ## Gaming
         (retroarch.withCores
             (cores: with cores; [
@@ -94,11 +90,11 @@
         )
         # lunar-client
         ## Chess
-        scid-vs-pc
+        # scid-vs-pc
 
         ## Classify Later
         # for gui flatpak
-        gnome-software
+        # gnome-software
     ];
 
     # Importing configurations of other programs
@@ -144,7 +140,15 @@
         GDK_DPI_SCALE = "1";
         QT_SCALE_FACTOR = "1";
         QT_AUTO_SCREEN_SCALE_FACTOR = "0";
+        XCURSOR_THEME = "Bibata-Modern-Ice";
         XCURSOR_SIZE = "24"; # Adjust depending on DPI
+        WLR_NO_HARDWARE_CURSORS = "1";
+    };
+    # Cursor stuff too?
+    home.pointerCursor = {
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
+        size = 24;
     };
 
    # Writing script files from ./scripts to ~/.local/bin/customScripts
