@@ -229,6 +229,7 @@
 			font-awesome                    # for fun icons!
             nerd-fonts.fira-code
             nerd-fonts.iosevka
+            nerd-fonts.jetbrains-mono
 		];
 
         services.flatpak.enable = true;
