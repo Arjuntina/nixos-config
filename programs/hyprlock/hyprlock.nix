@@ -18,6 +18,15 @@
             extraConfig = builtins.readFile ./hyprlockConfig.conf;
 
         };
+
+        # Move images from ./hyprlockBackgrounds into ~/.config/hypr/hyprlockBackgrounds
+        home.file.".config/hypr/hyprlockBackgrounds/catPic.svg" = {
+            source = ./hyprlockBackgrounds/catPic.svg;
+        };
+        home.file.".config/hypr/hyprlockBackgrounds/catPic.png" = {
+            source = ./hyprlockBackgrounds/catPic.png;
+        };
+
 	};
 }
 

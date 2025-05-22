@@ -52,8 +52,8 @@
 @define-color	crust-rgb  rgb(17, 17, 27);
 
 * {
-  font-family: "FiraCode Nerd Font Propo", monospace;
-  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 15px;
 }
 
 /* Window */

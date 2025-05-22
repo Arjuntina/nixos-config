@@ -95,6 +95,7 @@
         ## Classify Later
         # for gui flatpak
         # gnome-software
+        lxappearance
     ];
 
     # Importing configurations of other programs
@@ -132,7 +133,9 @@
 			};
 		};
 	};
-    
+   
+
+    # LEARN ABOUT THE SCALING AND CURSOR STUFF BELOW BECAUSE THERE IS A LOT THAT IS BLINDLY COPIED AND PASTED AND I DON"T UNDERSTAND AT ALL
     # Some session variables to set at login to make X11 apps scale better? Idk copied from ChatGPT and need to look into more thoroughly
     home.sessionVariables = {
         XWAYLAND_SCALE = "1";
@@ -140,16 +143,22 @@
         GDK_DPI_SCALE = "1";
         QT_SCALE_FACTOR = "1";
         QT_AUTO_SCREEN_SCALE_FACTOR = "0";
-        XCURSOR_THEME = "Bibata-Modern-Ice";
-        XCURSOR_SIZE = "24"; # Adjust depending on DPI
-        WLR_NO_HARDWARE_CURSORS = "1";
+        XCURSOR_THEME = "Banana";            # Should be set with home.pointerCursor below but set here just in case (fallback)
+        XCURSOR_SIZE = "18";                                # Should be set with home.pointerCursor below but set here just in case (fallback)
+        WLR_NO_HARDWARE_CURSORS = "1";                      # Forces the cursor to be rendered in software, reducing visual bugs such as offset (prob can delete but maybe play around w it first?)
     };
-    # Cursor stuff too?
+    # Cursor stuff
     home.pointerCursor = {
-        name = "Bibata-Modern-Ice";
-        package = pkgs.bibata-cursors;
-        size = 24;
+        name = "Banana";
+        package = pkgs.banana-cursor;
+        size = 18;
     };
+    dconf.settings = {
+        "org/gnome/desktop/interface" = {
+            cursor-blink = false;       # Otherwise the blinking is really bad on programs like firefox
+        };
+    };
+
 
    # Writing script files from ./scripts to ~/.local/bin/customScripts
    # Must be done individually because, although "recursive = true" would copy the files, the "executable = true" flag does not apply recursively through a directory
