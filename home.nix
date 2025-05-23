@@ -95,7 +95,6 @@
         ## Classify Later
         # for gui flatpak
         # gnome-software
-        lxappearance
     ];
 
     # Importing configurations of other programs
