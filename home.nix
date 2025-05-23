@@ -95,6 +95,12 @@
         ## Classify Later
         # for gui flatpak
         # gnome-software
+        # For managing keyring
+        seahorse
+        papirus-icon-theme #?? Didn't do much ok
+
+        # Screenshots
+
     ];
 
     # Importing configurations of other programs
@@ -157,6 +163,8 @@
             cursor-blink = false;       # Otherwise the blinking is really bad on programs like firefox
         };
     };
+
+    gtk.iconTheme.name = "Papirus-Dark";
 
 
    # Writing script files from ./scripts to ~/.local/bin/customScripts
