@@ -34,14 +34,23 @@ case "$1" in
         # wl-copy to immediately copy the screenshot to the clipboard
         grim -g "$(slurp)" - | wl-copy
         ;;
+    3)
+        # If input = 3, take screenshot of the entire screen!
+        # grim - to capture the entire screen
+        # wl-copy to save the screenshot to the clipboard
+        # slurp not used because no region needs to be selected
+        grim - | wl-copy
+        ;;
     *)
         # If no input is provided, display some help info (copied from chatgpt)
         echo "Usage: $0 [1|2]"
         echo "1 - Select region, annotate, copy to clipboard"
         echo "2 - Select region, copy to clipboard (no annotation)"
+        echo "3 - Fullscreen screenshot, copy to clipboard"
         ;;
 esac
 
 
+
 # To-do: customize swappy (can customize some aspects of the software & stuff like what directory to save files to)
-# To-do: use zsh?
+# To-do: use zsh in script instead of bash??
