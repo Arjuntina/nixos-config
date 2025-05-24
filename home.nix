@@ -99,8 +99,13 @@
         seahorse
         papirus-icon-theme #?? Didn't do much ok
 
-        # Screenshots
+        # Screenshots (explanation of what they do is in the screenshot script I have)
+        grim
+        slurp
+        swappy
 
+        # Command line control of clipboard
+        wl-clipboard
     ];
 
     # Importing configurations of other programs
@@ -190,6 +195,10 @@
     };
     home.file.".local/bin/customScripts/brightnessSlightDown.sh" = {
         source = ./scripts/brightnessSlightDown.sh;
+        executable = true;
+    };
+    home.file.".local/bin/customScripts/screenshot.sh" = {
+        source = ./scripts/screenshot.sh;
         executable = true;
     };
 
