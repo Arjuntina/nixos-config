@@ -72,7 +72,7 @@
         vscodium
         # android-studio
         ## Sciency
-        # stellarium
+        stellarium
         ## Virtual Machine
         # virtualbox
         # wineWowPackages.waylandFull
