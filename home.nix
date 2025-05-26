@@ -156,6 +156,9 @@
         XCURSOR_THEME = "Banana";            # Should be set with home.pointerCursor below but set here just in case (fallback)
         XCURSOR_SIZE = "18";                                # Should be set with home.pointerCursor below but set here just in case (fallback)
         WLR_NO_HARDWARE_CURSORS = "1";                      # Forces the cursor to be rendered in software, reducing visual bugs such as offset (prob can delete but maybe play around w it first?)
+        # Electron apps - force them to use wayland
+        ELECTRON_ENABLE_WAYLAND = "1";
+        
     };
     # Cursor stuff
     home.pointerCursor = {
