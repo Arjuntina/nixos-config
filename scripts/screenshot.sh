@@ -27,12 +27,16 @@ case "$1" in
         # After annotation, saeit to a temp file
         # wl-copy to put the file on my clipboard
         grim -g "$(slurp)" - | swappy -f - -o /tmp/swappy-output.png && wl-copy < /tmp/swappy-output.png
+        # Send a notification of the screenshot
+        notify-send "󰚓 Screenshot saved" "Annotated screenshot copied to clipboard."
         ;;
     2)
         # If input = 2, take screenshot from mouse selection but do NOT use swappy to annotate screenshot
         # grim -g "$(slurp)" - takes a screenshot and sends it to stdout
         # wl-copy to immediately copy the screenshot to the clipboard
         grim -g "$(slurp)" - | wl-copy
+        # Send a notification of the screenshot
+        notify-send "󰚓 Screenshot taken" "Region copied to clipboard."
         ;;
     3)
         # If input = 3, take screenshot of the entire screen!
@@ -40,6 +44,8 @@ case "$1" in
         # wl-copy to save the screenshot to the clipboard
         # slurp not used because no region needs to be selected
         grim - | wl-copy
+        # Send a notification of the screenshot
+        notify-send "🖥️ Fullscreen screenshot" "Image copied to clipboard."
         ;;
     *)
         # If no input is provided, display some help info (copied from chatgpt)
