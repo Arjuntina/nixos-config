@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 # Get current brightness (rounded to int)
 # Using awk!
 BRIGHTNESS=$(light -G | awk '{printf "%.0f", $1}')
