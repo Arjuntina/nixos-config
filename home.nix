@@ -132,6 +132,27 @@
                 alias v='vim'
                 # for using yt-dlp (tho need to figure out more and maybe set some params bc I don't use this at all)
                 alias y='yt-dlp'
+                # Tmux
+                tm() {
+                    case "$1" in
+                        s)
+                            if [ -n "$2" ]; then
+                                ~/.local/bin/customScripts/tmuxSessionLaunch.sh "$2"
+                            else
+                                echo "Usage: tm s <session-name>"
+                            fi
+                            ;;
+                        ls)
+                            tmux ls
+                            ;;
+                        Q)
+                            tmux kill-server
+                            ;;
+                        *)
+                            command tmux "$@"
+                            ;;
+                    esac
+                }
             '';
 
             # Ease of use
@@ -157,7 +178,8 @@
         XCURSOR_SIZE = "18";                                # Should be set with home.pointerCursor below but set here just in case (fallback)
         WLR_NO_HARDWARE_CURSORS = "1";                      # Forces the cursor to be rendered in software, reducing visual bugs such as offset (prob can delete but maybe play around w it first?)
         # Electron apps - force them to use wayland
-        ELECTRON_ENABLE_WAYLAND = "1";
+        ELECTRON_ENABLE_WAYLAND = "1";      # What I think needs to be enabled for normal distros but doesn't work for me on hyprland
+        NIXOS_OZONE_WL = "1";               # The setting which worked for me on nixos specifically
         
     };
     # Cursor stuff
@@ -202,6 +224,10 @@
     };
     home.file.".local/bin/customScripts/screenshot.sh" = {
         source = ./scripts/screenshot.sh;
+        executable = true;
+    };
+    home.file.".local/bin/customScripts/tmuxSessionLaunch.sh" = {
+        source = ./scripts/tmuxSessionLaunch.sh;
         executable = true;
     };
 
