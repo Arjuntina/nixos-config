@@ -7,8 +7,9 @@
 	];
 
 	options = {
-		# What high level options to include
-		# Toggle on/off window managers/display managers maybe
+		# What high level options to include (eg. device)
+
+		# Toggle on/off window managers/display managers?
 	};
 
 	config = {
