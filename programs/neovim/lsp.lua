@@ -2,6 +2,7 @@ require("mason").setup { ui = { border = "rounded" } }
 require("mason-lspconfig").setup {
 	automatic_installation = false,
 }
+
 local lspconfig = require('lspconfig')
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()     -- this apparently ensures that the LSP suggestions are included in the autocomplete box? I think?
@@ -24,6 +25,16 @@ lspconfig.pyright.setup{            -- for python
     capabilities = capabilities
 }
 lspconfig.nil_ls.setup{            -- for nix
+    -- configuration added below to hopefully supress annoying messages saying that flake inputs are not fetched (even though they probably are? tbh idk)
+    -- let's see if this works
+    settings = {
+        ["nil"] = {
+            nix = {
+                autoEvalInputs = false,
+                autoArchive = false
+            }
+        }
+    }
 }
 lspconfig.jdtls.setup{             -- for Java
 }
