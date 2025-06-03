@@ -69,7 +69,8 @@
             };
         };
 
-		# Apple webcam
+		# Apple webcam (only enabled for mac)
+
 		hardware.facetimehd.enable = true;
 
 		# NVIDIA
