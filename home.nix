@@ -123,7 +123,9 @@
                 # ALIAS commands:
                 # NIX ALIASES
                 # for nixos-rebuild switch
-                alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/'
+                # --impure flag added because I want to use a symlink to a computer's hardware configuration in /etc/nixos/hardware-configuration.nix
+                # Can maybe change/revise later (but idk if I'll need to?)
+                alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/ --impure'
                 # for nix shells (need to add nix-develop)
                 alias nix-shell='nix-shell --command zsh'
 
