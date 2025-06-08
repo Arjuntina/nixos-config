@@ -8,9 +8,18 @@
 
     options = {
         # High level options to include (eg. device)
+        device = lib.mkOption {
+            type = lib.types.enum [ "macbook15" "surfacepro" ];
+            default = "macbook15";
+            description = "Device being used -- macbook15, surfacepro";
+        };
     };
 
-    config = {
+    config = lib.mkMerge [
+    {
+        # Have to add extra code to strip a "\n" because \n is automatically added to the end of every file in vim
+        device = builtins.replaceStrings ["\n"] [""] (builtins.readFile ./device.txt);
+
         home.username = "arjuntina";
         home.homeDirectory = "/home/arjuntina";
         programs.home-manager.enable = true;
@@ -89,7 +98,7 @@
             # winetricks
             # dosbox-staging
             ## Utility
-            # flameshot
+            flameshot
             # qbittorrent
             ## Gaming
             (retroarch.withCores
@@ -242,5 +251,7 @@
        # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced
        # Should not have to necessarily touch it but can periodically update it to ensure configuration syntax is "up to date"
        home.stateVersion = "23.11";
-    };
+    }
+
+    ];
 }

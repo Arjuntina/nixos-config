@@ -1,6 +1,7 @@
 {config, pkgs, lib, ...}:
 
 {
+
 	imports = [
 		./alacritty/alacritty.nix
         ./anki/anki.nix
@@ -16,50 +17,58 @@
         ./zathura/zathura.nix
 	];
 
-	# Enable/disable programs & some options through custom wrappers
-	# The options here should be "high level" ones that encompass many changes and be ones I want to change frequently
+    config = lib.mkMerge [
+    {
+        # Enable/disable programs & some options through custom wrappers
+        # The options here should be "high level" ones that encompass many changes and be ones I want to change frequently
 
-	alacritty = {
-		enable = true;
-	};
+        alacritty = {
+            enable = true;
+        };
 
-    anki = {
-        enable = true;
-    };
+        anki = {
+            enable = true;
+        };
 
-    mpv = {
-        enable = true;
-    };
+        mpv = {
+            enable = true;
+        };
 
-	neovim = {
-		enable = true;
+        neovim = {
+            enable = true;
 
-		# Custom option which declares the colorscheme of neovim so that I don't have to go digging around the configuration files
-		# Options = catppuccin & tokyonight
-		colorscheme = "catppuccin";
-	};
+            # Custom option which declares the colorscheme of neovim so that I don't have to go digging around the configuration files
+            # Options = catppuccin & tokyonight
+            colorscheme = "catppuccin";
+        };
 
-    rofi = {
-        enable = false;
-    };
+        rofi = {
+            enable = false;
+        };
 
-    starship = {
-        enable = true;
-    };
+        starship = {
+            enable = true;
+        };
 
-    tmux = {
-        enable = true;
-    };
+        tmux = {
+            enable = true;
+        };
 
-    wofi = {
-        enable = true;
-    };
+        wofi = {
+            enable = true;
+        };
 
-    yt-dlp = {
-        enable = true;
-    };
+        yt-dlp = {
+            enable = true;
+        };
 
-    zathura = {
-        enable = true;
-    };
+        zathura = {
+            enable = true;
+        };
+    }
+
+    (lib.mkIf (config.device == "macbook15") {
+    })
+
+    ];
 }
