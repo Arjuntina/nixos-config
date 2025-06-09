@@ -1,3 +1,4 @@
+/* Overall waybar styling */
 * {
     min-height: 0;
     min-width: 0;
@@ -42,6 +43,9 @@ window#waybar {
     color: #f38ba8;
 }
 
+/* Modules */
+
+#custom-wofi_launcher,
 #clock,
 #pulseaudio,
 #custom-logo,
@@ -58,6 +62,12 @@ window#waybar {
     margin: 5px 4px;
     /* background-color: #1e1e2e; */
     background-color: #383850;
+}
+
+#custom-wofi_launcher {
+    font-family: "FiraCode Nerd Font Mono";
+    font-size: 15px;
+    color: #6d719e;
 }
 
 #custom-sep {

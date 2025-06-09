@@ -6,8 +6,14 @@
     "gtk-layer-shell": true,
     "passthrough": false,
     "fixed-center": true,
-    "modules-left": ["clock#simpleclock", "clock"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-left": [
+        "custom/wofi_launcher",
+        "clock#simpleclock",
+        "clock"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
     "modules-right": [
         "tray",
         "pulseaudio",
@@ -15,13 +21,18 @@
         "battery",
         "custom/power"
     ],
+    "custom/wofi_launcher": {
+        "format": "",               
+        "on-click": "wofi -S drun -p Application -O alphabetical -I -m -i -q",
+        "tooltip": false
+    },
     "clock": {
-        "format": "<span font='Font Awesome 6 Free Solid 9'></span> {:L%a %d %b}",
+        "format": "<span font='Font Awesome 6 Free Solid 7' rise='1250'></span> {:L%a %d %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "clock#simpleclock": {
         "tooltip": false,
-        "format": "<span font='Font Awesome 6 Free Solid 9'></span> {:%H:%M}"
+        "format": "<span font='Font Awesome 6 Free Solid 7' rise='1000'></span> {:%H:%M}"
     },
     "hyprland/workspaces": {
         "on-click": "activate",
@@ -42,16 +53,16 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-icons": ["<span font='Font Awesome 6 Free Solid 9'></span>",
-                         "<span font='Font Awesome 6 Free Solid 9'></span>",
-                         "<span font='Font Awesome 6 Free Solid 9'></span>"],
-        "format-muted": "<span font='Font Awesome 6 Free Solid 9'></span>",
+        "format-icons": ["<span font='Font Awesome 6 Free Solid 7' rise='1000'></span>",
+                         "<span font='Font Awesome 6 Free Solid 7' rise='1000'></span>",
+                         "<span font='Font Awesome 6 Free Solid 7' rise='1000'></span>"],
+        "format-muted": "<span font='Font Awesome 6 Free Solid 7' rise='1000'></span>",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "backlight": {
         "format": "{icon} {percent}%",
-        "format-icons": ["<span font='Font Awesome 6 Free Solid 9'></span>"]
+        "format-icons": ["<span font='Font Awesome 6 Free Solid 7' rise='1000'></span>"]
     },
     "battery" : {
         "interval": 60,
@@ -60,11 +71,11 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-icons":  ["<span font='Font Awesome 6 Free Solid 9'></span>",
-                          "<span font='Font Awesome 6 Free Solid 9'></span>",
-                          "<span font='Font Awesome 6 Free Solid 9'></span>",
-                          "<span font='Font Awesome 6 Free Solid 9'></span>",
-                          "<span font='Font Awesome 6 Free Solid 9'></span>"]
+        "format-icons":  ["<span font='Font Awesome 6 Free Solid 7' rise='1500'></span>",
+                          "<span font='Font Awesome 6 Free Solid 7' rise='1500'></span>",
+                          "<span font='Font Awesome 6 Free Solid 7' rise='1500'></span>",
+                          "<span font='Font Awesome 6 Free Solid 7' rise='1500'></span>",
+                          "<span font='Font Awesome 6 Free Solid 7' rise='1500'></span>"]
     },
     "tray": {
         "show-passive-items": true,
