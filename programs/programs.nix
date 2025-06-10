@@ -8,6 +8,7 @@
         ./hyprlock/hyprlock.nix
         ./mpv/mpv.nix
 		./neovim/neovim.nix
+        ./retroarch/retroarch.nix
         ./rofi/rofi.nix
         ./starship/starship.nix
         ./tmux/tmux.nix
@@ -40,6 +41,10 @@
             # Custom option which declares the colorscheme of neovim so that I don't have to go digging around the configuration files
             # Options = catppuccin & tokyonight
             colorscheme = "catppuccin";
+        };
+
+        retroarch = {
+            enable = true;
         };
 
         rofi = {
