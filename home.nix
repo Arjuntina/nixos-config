@@ -100,13 +100,7 @@
             ## Utility
             flameshot
             # qbittorrent
-            ## Gaming
-            (retroarch.withCores
-                (cores: with cores; [
-                    mesen
-                    bsnes
-                ])
-            )
+            # Gaming
             # lunar-client
             ## Chess
             # scid-vs-pc
