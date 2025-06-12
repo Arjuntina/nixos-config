@@ -56,8 +56,8 @@
 
             # optionally, you may need to select the appropriate driver version for your specific gpu.
             # 470 for the 750m mac gpu?
-            package = config.boot.kernelPackages.nvidiaPackages.stable;
-            # package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+            # package = config.boot.kernelPackages.nvidiaPackages.stable;
+            package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
         };
 

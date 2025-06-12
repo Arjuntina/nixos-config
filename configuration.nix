@@ -74,7 +74,7 @@
 		hardware.facetimehd.enable = true;
 
         # graphics stuff?
-        myGraphics = "nouveau";
+        myGraphics = "nvidia";
 
 
 		# BACKGROUND PROCESSES STUFF
