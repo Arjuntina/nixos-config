@@ -101,6 +101,7 @@
             flameshot
             # qbittorrent
             # Gaming
+            dolphin-emu
             # lunar-client
             ## Chess
             # scid-vs-pc
