@@ -31,8 +31,6 @@ vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {desc = "go to definition"}
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, {desc = "code actions"})
 
 
-
-
 -- LAZY-LSP (which I have not configured)
 -- local lsp_zero = require("lsp-zero")
 -- 
