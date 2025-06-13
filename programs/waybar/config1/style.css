@@ -70,6 +70,10 @@ window#waybar {
     color: #6d719e;
 }
 
+#custom-wofi_launcher:hover {
+    color: #ffffff;
+}
+
 #custom-sep {
     padding: 0px;
     color: #585b70;
