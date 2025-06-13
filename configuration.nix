@@ -85,6 +85,11 @@
         myGraphics = "nouveau";
     })
 
+    (lib.mkIf (config.device == "surfacepro") {
+		# Bluetooth is buggy 
+        hardware.bluetooth.enable = false;
+    })
+
     {
 
 		# BACKGROUND PROCESSES STUFF
