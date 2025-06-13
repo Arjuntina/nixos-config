@@ -5,28 +5,26 @@ require("mason-lspconfig").setup {
 
 local lspconfig = require('lspconfig')
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()     -- this apparently ensures that the LSP suggestions are included in the autocomplete box? I think?
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()     -- this apparently ensures that the LSP suggestions are included in the autocomplete box? I think? -- will set up later (one day)
 
-lspconfig.lua_ls.setup{ -- for Lua
-	settings = {
-		Lua = {
+-- for Lua
+vim.lsp.config('lua_ls', {
+    settings = {
+		Lua = { -- apply the settings below for Lua documents
 			diagnostics = {
-				globals = { "vim" } -- idk apparently this is supposed to be good?
+				globals = { "vim" } -- tells the language server that "vim" is a global variable, which stops the server from yelling at you when running "vim.g...." commands
 			}
 		}
-	},
-    capabilities = capabilities
-}
-
-lspconfig.clangd.setup{             -- for C
-    capabilities = capabilities
-}
-lspconfig.pyright.setup{            -- for python
-    capabilities = capabilities
-}
-vim.lsp.enable('nixd')            -- for nix
-lspconfig.jdtls.setup{             -- for Java
-}
+    },
+})
+-- for C
+vim.lsp.enable('clangd')
+-- for python
+vim.lsp.enable('pyright')
+-- for nix
+vim.lsp.enable('nixd')
+-- for java
+vim.lsp.enable('jdtls')
 
 vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, {desc = "hover"})
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.hover, {desc = "go to definition"})
