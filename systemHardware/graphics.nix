@@ -3,8 +3,8 @@
     options = {
         # Nouveau or proprietary Nvidia graphics
         myGraphics = lib.mkOption {
-            type = lib.types.enum [ "nouveau" "nvidia" ];
-            default = "nouveau";
+            type = lib.types.enum [ "nouveau" "nvidia" "none" ];
+            default = "none";
             description = "Graphics drivers to use for the mac - nouveau or nvidia";
         };
     };
@@ -68,6 +68,10 @@
 
     (lib.mkIf (config.myGraphics == "nouveau") {
         # Nothing for now bc nouveau is the default I think but hopefully/maybe switch later to customize my experience
+    })
+
+    (lib.mkIf (config.myGraphics == "none") {
+        # for devices which lack graphics cards (eg. surface pro)
     })
 
     ];

@@ -76,14 +76,16 @@
             };
         };
     }
-    {
+
+    (lib.mkIf (config.device == "macbook15") {
 		# Apple webcam (only enabled for mac)
 		hardware.facetimehd.enable = true;
-    }
-    {
+
         # graphics stuff?
         myGraphics = "nouveau";
+    })
 
+    {
 
 		# BACKGROUND PROCESSES STUFF
 		# lower level things that form the "base" of the system
