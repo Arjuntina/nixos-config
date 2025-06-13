@@ -24,18 +24,7 @@ lspconfig.clangd.setup{             -- for C
 lspconfig.pyright.setup{            -- for python
     capabilities = capabilities
 }
-lspconfig.nil_ls.setup{            -- for nix
-    -- configuration added below to hopefully supress annoying messages saying that flake inputs are not fetched (even though they probably are? tbh idk)
-    -- let's see if this works
-    settings = {
-        ["nil"] = {
-            nix = {
-                autoEvalInputs = false,
-                autoArchive = false
-            }
-        }
-    }
-}
+vim.lsp.enable('nixd')            -- for nix
 lspconfig.jdtls.setup{             -- for Java
 }
 

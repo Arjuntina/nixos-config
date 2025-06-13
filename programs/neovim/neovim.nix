@@ -181,7 +181,7 @@
 
 			# Extra packages? Am using for lsp servers but might change as i don't really understand them rn
 			extraPackages = with pkgs; [
-				nil #Nix
+                nixd #for nix
 				lua-language-server #Lua
 				pyright #Python
 				clang-tools #C
