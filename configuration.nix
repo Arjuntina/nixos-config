@@ -9,11 +9,17 @@
 
 	options = {
 		# What high level options to include (eg. device)
-
-		# Toggle on/off window managers/display managers?
+        device = lib.mkOption {
+            type = lib.types.enum [ "macbook15" "surfacepro" ];
+            default = "macbook15";
+            description = "Device being used -- macbook15, surfacepro";
+        };
 	};
 
-	config = {
+	config = lib.mkMerge [
+    {
+        # Have to add extra code to strip a "\n" because \n is automatically added to the end of every file in vim
+        device = builtins.replaceStrings ["\n"] [""] (builtins.readFile ./device.txt);
 
 		# NIX STUFF
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -69,12 +75,14 @@
                 };
             };
         };
-
+    }
+    {
 		# Apple webcam (only enabled for mac)
 		hardware.facetimehd.enable = true;
-
+    }
+    {
         # graphics stuff?
-        myGraphics = "nvidia";
+        myGraphics = "nouveau";
 
 
 		# BACKGROUND PROCESSES STUFF
@@ -255,6 +263,7 @@
 		#
 		# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
 		system.stateVersion = "24.11"; # Did you read the comment?
-	};
+	}
+    ];
 }
 
