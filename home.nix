@@ -26,7 +26,7 @@
 
         home.packages = with pkgs;
         let
-            RStudio-with-my-packages = rstudioWrapper.override{
+            RStudio-with-my-packages = rstudioWrapper.override {
                 packages = with rPackages; [
                     tidyverse
                 ];
@@ -241,6 +241,13 @@
        home.file.".local/bin/customScripts/tmuxSessionLaunch.sh" = {
             source = ./scripts/tmuxSessionLaunch.sh;
             executable = true;
+       };
+
+       # Git (maybe move and organize later)
+       programs.git = {
+            enable = true;
+            userName = "Arjun Patel";
+            userEmail = "nujra911@gmail.com";
        };
 
        # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced
