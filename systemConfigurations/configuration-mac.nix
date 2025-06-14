@@ -2,22 +2,12 @@
 
 {
 	imports = [ # Include the results of the hardware scan.
-		/etc/nixos/hardware-configuration.nix
+        ./systemHardware/hardware-configuration-mac.nix
         ./systemHardware/graphics.nix
         ./systemHardware/network.nix
 	];
 
-	options = {
-		# What high level options to include (eg. device)
-        device = lib.mkOption {
-            type = lib.types.enum [ "macbook15" "surfacepro" ];
-            default = "macbook15";
-            description = "Device being used -- macbook15, surfacepro";
-        };
-	};
-
-	config = lib.mkMerge [
-    {
+	config = {
         # Have to add extra code to strip a "\n" because \n is automatically added to the end of every file in vim
         device = builtins.replaceStrings ["\n"] [""] (builtins.readFile ./device.txt);
 
@@ -75,22 +65,12 @@
                 };
             };
         };
-    }
 
-    (lib.mkIf (config.device == "macbook15") {
 		# Apple webcam (only enabled for mac)
 		hardware.facetimehd.enable = true;
 
         # graphics stuff?
         myGraphics = "nouveau";
-    })
-
-    (lib.mkIf (config.device == "surfacepro") {
-		# Bluetooth is buggy 
-        hardware.bluetooth.enable = false;
-    })
-
-    {
 
 		# BACKGROUND PROCESSES STUFF
 		# lower level things that form the "base" of the system
@@ -269,7 +249,6 @@
 		#
 		# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
 		system.stateVersion = "24.11"; # Did you read the comment?
-	}
-    ];
+	};
 }
 

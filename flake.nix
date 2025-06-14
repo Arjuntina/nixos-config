@@ -20,7 +20,7 @@
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
-				./configuration.nix
+				./systemConfigurations/configuration-surfacepro.nix
 
 				home-manager.nixosModules.home-manager  {
                     # Whether to use the nix-pkgs options specified in the configuration.nix OR to use a private pkgs instance specified by home manager
@@ -31,7 +31,7 @@
                     # Not sure what that really does (good or bad thing?)
                     # Most people have it enabled though so will do so explicitly here
 					home-manager.useUserPackages = true;
-					home-manager.users.arjuntina = import ./home.nix;
+					home-manager.users.arjuntina = import ./homeConfigurations/home.nix;
 				}
 
 			];

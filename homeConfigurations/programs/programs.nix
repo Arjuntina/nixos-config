@@ -18,8 +18,8 @@
         ./zathura/zathura.nix
 	];
 
-    config = lib.mkMerge [
-    {
+    config = {
+
         # Enable/disable programs & some options through custom wrappers
         # The options here should be "high level" ones that encompass many changes and be ones I want to change frequently
 
@@ -70,10 +70,5 @@
         zathura = {
             enable = true;
         };
-    }
-
-    (lib.mkIf (config.device == "macbook15") {
-    })
-
-    ];
+    };
 }

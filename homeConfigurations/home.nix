@@ -6,20 +6,7 @@
         ./windowManagers/windowManagers.nix
     ];
 
-    options = {
-        # High level options to include (eg. device)
-        device = lib.mkOption {
-            type = lib.types.enum [ "macbook15" "surfacepro" ];
-            default = "macbook15";
-            description = "Device being used -- macbook15, surfacepro";
-        };
-    };
-
-    config = lib.mkMerge [
-    {
-        # Have to add extra code to strip a "\n" because \n is automatically added to the end of every file in vim
-        device = builtins.replaceStrings ["\n"] [""] (builtins.readFile ./device.txt);
-
+    config = {
         home.username = "arjuntina";
         home.homeDirectory = "/home/arjuntina";
         programs.home-manager.enable = true;
@@ -135,7 +122,7 @@
                     # for nixos-rebuild switch
                     # --impure flag added because I want to use a symlink to a computer's hardware configuration in /etc/nixos/hardware-configuration.nix & for untracked device.txt
                     # Can maybe change/revise later (but idk if I'll need to?)
-                    alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/ --impure'
+                    alias nrs='sudo nixos-rebuild switch --flake ~/.config/nixos-config/ '
                     # for nix shells (need to add nix-develop)
                     alias nix-shell='nix-shell --command zsh'
 
@@ -253,7 +240,5 @@
        # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced
        # Should not have to necessarily touch it but can periodically update it to ensure configuration syntax is "up to date"
        home.stateVersion = "23.11";
-    }
-
-    ];
+    };
 }
