@@ -17,6 +17,6 @@ Modify appropriate options
 
 Run "nixos-rebuild switch --flake ~/.config/nixos-config/ --impure"
     This command only needs to be run once - after this, just run "nrs"
-    --impure flag is only used because each machine will have a different hardware-configuration.nix
+    --impure flag is only used because each machine will have a different hardware-configuration.nix & for device.txt
 
 
