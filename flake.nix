@@ -20,7 +20,7 @@
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
-				./systemConfigurations/configuration-surfacepro.nix
+				./systemConfigurations/configuration-mac.nix
 
 				home-manager.nixosModules.home-manager  {
                     # Whether to use the nix-pkgs options specified in the configuration.nix OR to use a private pkgs instance specified by home manager
