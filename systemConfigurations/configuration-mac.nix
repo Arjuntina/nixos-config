@@ -2,15 +2,12 @@
 
 {
 	imports = [ # Include the results of the hardware scan.
-        ./systemHardware/hardware-configuration-mac.nix
+        ./hardware-configuration-mac.nix
         ./systemHardware/graphics.nix
         ./systemHardware/network.nix
 	];
 
 	config = {
-        # Have to add extra code to strip a "\n" because \n is automatically added to the end of every file in vim
-        device = builtins.replaceStrings ["\n"] [""] (builtins.readFile ./device.txt);
-
 		# NIX STUFF
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
