@@ -20,6 +20,12 @@
             };
 
         in [
+
+            # Temp!
+            # GUI Task Managers
+            mate.mate-system-monitor
+            lxde.lxtask
+
             # CLI programs
             htop
             fastfetch
