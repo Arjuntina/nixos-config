@@ -50,6 +50,9 @@
             (pkgs.python3.withPackages (python-pkgs: [
                 # Don't really want to include any packages here bc I would rather use a nix-shell
                 # Unless there happens to be a really "universal" package
+
+                # Actually idk here is for yt-dlp (can fix later)
+                python-pkgs.curl-cffi
             ]))
             # Java
             # jdk8
@@ -62,6 +65,7 @@
             # GUI Programs
             ## Web browsers
             firefox
+            google-chrome
             qutebrowser
             ## Communication
             # thunderbird
