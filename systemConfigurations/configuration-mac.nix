@@ -168,6 +168,8 @@
 		virtualisation.virtualbox.guest.enable = true;
 		#virtualisation.virtualbox.guest.dragAndDrop = true;
 
+        boot.blacklistedKernelModules = [ "kvm_intel" ]; # Disable kvm virtualization on this intel CPU - this allows virtualbox to use the virtualization features of the CPU
+
 		# Enables command line control of screen brightness
 		programs.light.enable = true;
 
