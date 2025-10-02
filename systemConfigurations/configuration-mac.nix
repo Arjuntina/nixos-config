@@ -14,7 +14,7 @@
         # I think just wait for the package/driver to eventually be updated (what I get for being on unstable ig)
         # Delete this code block later
         nixpkgs.config.permittedInsecurePackages = [
-             "broadcom-sta-6.30.223.271-57-6.12.42"
+             "broadcom-sta-6.30.223.271-57-6.12.49"
         ];
         boot.extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
         networking.networkmanager.enable = true;
