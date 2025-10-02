@@ -68,7 +68,7 @@
             google-chrome
             qutebrowser
             ## Communication
-            # thunderbird
+            thunderbird # figure out better alternatives soon
             discord
             zoom-us
             ## Documents
