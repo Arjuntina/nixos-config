@@ -96,9 +96,10 @@
         # graphics stuff?
         myGraphics = "nouveau";
         # This helps programs like brave and chrome not freeze
-        environment.variables = {
-            CHROME_FLAGS = "--disable-gpu";
-        };
+        # Actually nvm - the code below does NOT work
+        # environment.variables = {
+        #     CHROME_FLAGS = "--disable-gpu";
+        # };
 
 		# BACKGROUND PROCESSES STUFF
 		# lower level things that form the "base" of the system

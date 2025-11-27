@@ -19,6 +19,16 @@
                 ];
             };
 
+            # Create wrapped brave version in ~/.nix-profile/bin that disables the gpu so that the program does not visually crash
+            brave-wrapped = pkgs.writeShellScriptBin "brave" ''
+                exec ${pkgs.brave}/bin/brave --disable-gpu "$@"
+            '';
+
+            # Create wrapped google chrome version in ~/.nix-profile/bin that disables the gpu so that the program does not visually crash
+            chrome-wrapped = pkgs.writeShellScriptBin "google-chrome-stable" ''
+                exec ${pkgs.google-chrome}/bin/google-chrome-stable --disable-gpu "$@"
+            '';
+
         in [
             
             # TROUBLESHOOTING Stuff
@@ -68,9 +78,9 @@
             # GUI Programs
             ## Web browsers
             firefox
-            google-chrome
             qutebrowser
-            brave
+            brave-wrapped               # wrapped version to hopefully fix visual bugs
+            chrome-wrapped              # wrapped version to hopefully fix visual bugs
             ## Communication
             thunderbird # figure out better alternatives soon
             discord
@@ -177,6 +187,30 @@
                 };
             };
         };
+
+        # Brave & Google Chrome desktop files because they are wrapped in the derivation above
+        # and for some reason the original .desktop files disappear
+        home.file."share/applications/brave.desktop".text = ''
+            [Desktop Entry]
+            Name=Brave Browser
+            Exec=brave %U
+            Icon=brave
+            Type=Application
+            Terminal=false
+            Categories=Network;WebBrowser;
+        '';
+        home.file."share/applications/google-chrome.desktop".text = ''
+            [Desktop Entry]
+            Name=Google Chrome (Wrapped)
+            Comment=Launch Chrome with GPU disabled
+            Exec=google-chrome-stable %U
+            Terminal=false
+            Type=Application
+            Icon=google-chrome
+            Categories=Network;WebBrowser;
+            MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+        '';
+
        
 
         # LEARN ABOUT THE SCALING AND CURSOR STUFF BELOW BECAUSE THERE IS A LOT THAT IS BLINDLY COPIED AND PASTED AND I DON"T UNDERSTAND AT ALL
