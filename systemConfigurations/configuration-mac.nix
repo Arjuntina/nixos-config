@@ -10,6 +10,7 @@
 	config = {
         
         # Wifi Stuff (>:((((( ) -- i have to troubleshoot this
+        # RN is a LOT of blind copy/paste into chatgpt bc is not working
         nixpkgs.config.permittedInsecurePackages = [
              "broadcom-sta-6.30.223.271-59-6.12.59"
              # "mbedtls-2.28.10" # Not sure what this is but I needed to do it to stop system breakage
@@ -25,6 +26,7 @@
         boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
         # Blacklist conflicting open-source Broadcom drivers
         boot.blacklistedKernelModules = [ "b43" "ssb" "bcma" "brcmsmac" "kvm_intel" ];
+        # kvm_intel added here from below!!!
         # Optional: ensure your Wi-Fi is up after boot
         # You can also turn on Wi-Fi via nmcli if blocked
         # systemd.services.enableRfKill = {
@@ -93,6 +95,10 @@
 
         # graphics stuff?
         myGraphics = "nouveau";
+        # This helps programs like brave and chrome not freeze
+        environment.variables = {
+            CHROME_FLAGS = "--disable-gpu";
+        };
 
 		# BACKGROUND PROCESSES STUFF
 		# lower level things that form the "base" of the system
@@ -131,11 +137,14 @@
 		programs.hyprlock.enable = true;
 
 		# Desktop environment
-        # services.desktopManager.gnome.enable = true;
-        # services.gnome.core-apps.enable = false;
-        # services.gnome.core-developer-tools.enable = false;
-        # services.gnome.games.enable = false;
-        # environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
+        # Gnome stuff
+        services.desktopManager.gnome.enable = true;
+        services.gnome.core-apps.enable = false;
+        services.gnome.core-developer-tools.enable = false;
+        services.gnome.games.enable = false;
+        environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
+
+        # KDE stuff
 		services.desktopManager.plasma6.enable = true;
         # environment.plasma6.excludePackages = with pkgs.kdePackages; [
             # kwallet
