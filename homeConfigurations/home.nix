@@ -188,28 +188,45 @@
             };
         };
 
-        # Brave & Google Chrome desktop files because they are wrapped in the derivation above
-        # and for some reason the original .desktop files disappear
-        home.file."share/applications/brave.desktop".text = ''
-            [Desktop Entry]
-            Name=Brave Browser
-            Exec=brave %U
-            Icon=brave
-            Type=Application
-            Terminal=false
-            Categories=Network;WebBrowser;
-        '';
-        home.file."share/applications/google-chrome.desktop".text = ''
-            [Desktop Entry]
-            Name=Google Chrome (Wrapped)
-            Comment=Launch Chrome with GPU disabled
-            Exec=google-chrome-stable %U
-            Terminal=false
-            Type=Application
-            Icon=google-chrome
-            Categories=Network;WebBrowser;
-            MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
-        '';
+        # Brave & Google Chrome .desktop files because somehow they disappear when they are wrapped in the derivation above
+
+        xdg.desktopEntries = {
+            brave = {
+                name = "Brave Browser (Wrapped)";
+                comment = "Brave wrapped to disable GPU acceleration";
+                exec = "brave %U";
+                terminal = false;
+                categories = [ "Network" "WebBrowser" ];
+                icon = "brave-browser";  # Correct icon name
+                mimeType = [
+                    "text/html"
+                    "text/xml"
+                    "application/xhtml+xml"
+                    "x-scheme-handler/http"
+                    "x-scheme-handler/https"
+                ];
+            };
+
+            google-chrome = {
+                name = "Google Chrome (Wrapped)";
+                comment = "Chrome wrapped to disable GPU acceleration";
+                exec = "google-chrome-stable %U";
+                terminal = false;
+                categories = [ "Network" "WebBrowser" ];
+                icon = "google-chrome";  # Chrome icon name is correct
+                mimeType = [
+                    "text/html"
+                    "text/xml"
+                    "application/xhtml+xml"
+                    "x-scheme-handler/http"
+                    "x-scheme-handler/https"
+                ];
+            };
+        };
+
+        # To get the brave + chrome icons to work - idk let's see if it odes
+        home.file.".local/share/icons/hicolor/128x128/apps/brave-browser.png".source = pkgs.brave + "/share/icons/hicolor/128x128/apps/brave-browser.png";
+        home.file.".local/share/icons/hicolor/128x128/apps/google-chrome.png".source = pkgs.google-chrome + "/share/icons/hicolor/128x128/apps/google-chrome.png";
 
        
 
