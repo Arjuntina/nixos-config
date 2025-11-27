@@ -28,7 +28,7 @@
                     nixpkgs.overlays = [
                         (final: prev: {
                          vimPlugins = prev.vimPlugins // {
-                         lualine-nvim = prev.vimUtils.buildVimPluginFrom2Nix {
+                         lualine-nvim = prev.vimUtils.buildVimPlugin {
                          pname = "lualine.nvim";
                          version = "unstable";
                          src = prev.fetchFromGitHub {
