@@ -20,11 +20,14 @@
             };
 
         in [
-
-            # Temp!
+            
+            # TROUBLESHOOTING Stuff
+            # For when wifi and other things refuse to work >:(
+            # ig leave for now but can delete (or comment out) later to make config more clean
+            pciutils
+            
             # GUI Task Managers
-            mate.mate-system-monitor
-            lxde.lxtask
+            lxtask
 
             # CLI programs
             htop
@@ -67,6 +70,7 @@
             firefox
             google-chrome
             qutebrowser
+            brave
             ## Communication
             thunderbird # figure out better alternatives soon
             discord
@@ -243,8 +247,8 @@
        # Git (maybe move and organize later)
        programs.git = {
             enable = true;
-            userName = "Arjun Patel";
-            userEmail = "nujra911@gmail.com";
+            settings.user.name = "Arjun Patel";
+            settings.user.email = "nujra911@gmail.com";
        };
 
        # This determines the home-manager release a configuration is compatible with, which helps avoid breakage when system-incompatible changes are introduced

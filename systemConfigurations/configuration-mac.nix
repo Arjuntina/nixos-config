@@ -10,14 +10,28 @@
 	config = {
         
         # Wifi Stuff (>:((((( ) -- i have to troubleshoot this
-        # see why it's insecure and what I can do about it
-        # I think just wait for the package/driver to eventually be updated (what I get for being on unstable ig)
-        # Delete this code block later
         nixpkgs.config.permittedInsecurePackages = [
-             "broadcom-sta-6.30.223.271-57-6.12.51"
+             "broadcom-sta-6.30.223.271-59-6.12.59"
+             # "mbedtls-2.28.10" # Not sure what this is but I needed to do it to stop system breakage
         ];
-        boot.extraModulePackages = [ pkgs.linuxPackages.broadcom_sta ];
+        # Enable NetworkManager
         networking.networkmanager.enable = true;
+        # Devices NetworkManager should ignore (VirtualBox host-only)
+        networking.networkmanager.unmanaged = [ "vboxnet0" ];
+        # Proprietary Broadcom Wi-Fi
+        hardware.enableRedistributableFirmware = true;
+        # Load wl driver and ensure module built for the kernel
+        boot.kernelModules = [ "wl" ];
+        boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+        # Blacklist conflicting open-source Broadcom drivers
+        boot.blacklistedKernelModules = [ "b43" "ssb" "bcma" "brcmsmac" "kvm_intel" ];
+        # Optional: ensure your Wi-Fi is up after boot
+        # You can also turn on Wi-Fi via nmcli if blocked
+        # systemd.services.enableRfKill = {
+        #   enable = true;
+        #   wantedBy = [ "multi-user.target" ];
+        # };
+
 
 		# NIX STUFF
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -117,7 +131,11 @@
 		programs.hyprlock.enable = true;
 
 		# Desktop environment
-		# services.xserver.desktopManager.gnome.enable = true;
+        # services.desktopManager.gnome.enable = true;
+        # services.gnome.core-apps.enable = false;
+        # services.gnome.core-developer-tools.enable = false;
+        # services.gnome.games.enable = false;
+        # environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
 		services.desktopManager.plasma6.enable = true;
         # environment.plasma6.excludePackages = with pkgs.kdePackages; [
             # kwallet
@@ -168,7 +186,8 @@
 		virtualisation.virtualbox.guest.enable = true;
 		#virtualisation.virtualbox.guest.dragAndDrop = true;
 
-        boot.blacklistedKernelModules = [ "kvm_intel" ]; # Disable kvm virtualization on this intel CPU - this allows virtualbox to use the virtualization features of the CPU
+        # idk anymore is blacklisted above too
+        # boot.blacklistedKernelModules = [ "kvm_intel" ]; # Disable kvm virtualization on this intel CPU - this allows virtualbox to use the virtualization features of the CPU
 
 		# Enables command line control of screen brightness
 		programs.light.enable = true;
@@ -211,7 +230,45 @@
             options = "--delete-older-than 14d -d";     # Deletes generations older than 14d, then garbage collects those generations
         };
 
-
+        # Force chromium apps to not use nouveau drivers bc that causes crashes (copied from chatGPT - sort through later)
+        environment.variables = {
+             # ------------------------------------------------------------
+             # Chromium / QtWebEngine flags
+             # ------------------------------------------------------------
+             QTWEBENGINE_CHROMIUM_FLAGS = "--disable-gpu --disable-software-rasterizer";
+             # --disable-gpu: prevent Chromium from using GPU acceleration
+             # --disable-software-rasterizer: prevent fallback software rasterizer (forces CPU path)
+             QTWEBENGINE_DISABLE_GPU = "1";
+             # Explicitly disables GPU for QtWebEngine (redundant safety flag)
+             # ------------------------------------------------------------
+             # Qt Quick / SceneGraph backend (affects Anki, Discord, other Qt apps)
+             # ------------------------------------------------------------
+             QT_QUICK_BACKEND = "software";
+             # Force Qt Quick to use software rendering instead of OpenGL/GBM/Vulkan
+             QSG_RHI_BACKEND = "software";
+             # Force Qt SceneGraph RHI backend to software (CPU-based rendering)
+             QSG_RENDER_LOOP = "basic";
+             # Disable threaded SceneGraph loop
+             # Important for Wayland/Nouveau to avoid crashes on GPU buffer handling
+             # ------------------------------------------------------------
+             # Wayland-specific flags for Qt
+             # ------------------------------------------------------------
+             QT_WAYLAND_DISABLE_HW_ACCEL = "1";
+             # Disable Wayland hardware acceleration (prevents Nouveau/GBM segfaults)
+             QT_ENABLE_GLYPH_CACHE_WORKAROUND = "1";
+             # Minor Qt workaround for font cache issues that may appear with software rendering
+             QT_XCB_GL_INTEGRATION = "none";
+             # Prevent Qt from using XCB GL integration (irrelevant for Wayland, avoids conflicts)
+             # ------------------------------------------------------------
+             # Optional: Vulkan/GBM overrides for stubborn systems (comment out if unnecessary)
+             # ------------------------------------------------------------
+             # VK_ICD_FILENAMES = "";
+             # Prevent Vulkan from loading ICDs (optional, avoids Vulkan fallback issues)
+             # QT_KMS_ATOMIC = "0";
+             # Disable KMS atomic mode in Qt (optional for Nouveau stability)
+             # MESA_LOADER_DRIVER_OVERRIDE = "llvmpipe";
+             # Force Mesa software rasterizer (CPU) instead of GPU driver (very safe, slow)
+        };
 
 
 		# OTHER STUFF THAT I DON'T REALLY UNDERSTAND AND NEED/WANT TO FIGURE OUT

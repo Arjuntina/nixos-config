@@ -2,10 +2,10 @@
 	description = "a NixOS Configuration Flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
 		home-manager = {
-			url = "github:nix-community/home-manager/release-25.05";
+			url = "github:nix-community/home-manager/release-25.11";
 
             # ensures that home-manager uses the same nixpkgs source as nixpkgs so that no duplication occurs -- may slightly break home manager but shouldn't really 
 			inputs.nixpkgs.follows = "nixpkgs"; 
@@ -21,6 +21,28 @@
 			specialArgs = { inherit inputs; };
 			modules = [
 				./systemConfigurations/configuration-mac.nix
+
+                # --- Add this overlay here ---
+                # -- delete it later
+                {
+                    nixpkgs.overlays = [
+                        (final: prev: {
+                         vimPlugins = prev.vimPlugins // {
+                         lualine-nvim = prev.vimUtils.buildVimPluginFrom2Nix {
+                         pname = "lualine.nvim";
+                         version = "unstable";
+                         src = prev.fetchFromGitHub {
+                         owner = "nvim-lualine";
+                         repo = "lualine.nvim";
+                         rev = "HEAD";
+                        # This is the correct hash from your error output:
+                         sha256 = "OpLZH+sL5cj2rcP5/T+jDOnuxd1QWLHCt2RzloffZOA=";
+                         };
+                         };
+                         };
+                         })
+                    ];
+                }
 
 				home-manager.nixosModules.home-manager  {
                     # Whether to use the nix-pkgs options specified in the configuration.nix OR to use a private pkgs instance specified by home manager
